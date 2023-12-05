@@ -1,2 +1,4 @@
-﻿  Armstrong.cpp
+﻿  Assembling asm64.asm...
+asm64.asm(11): warning A6004: procedure argument or local not referenced : arg1
+asm64.asm(11): warning A6004: procedure argument or local not referenced : arg2
   Armstrong.vcxproj -> C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Armstrong.exe
