@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <sstream>
 #include <vector>
+#include <thread>
 
 extern "C" int asm_func(int first_number, int last_number);
 
@@ -41,6 +42,14 @@ void armstrongTest(int number, int toPower) {
 	}
 }
 
+void armstrongRange(int numMin, int numMax, int rankMin, int rankMax) {
+	for (int r = rankMin; r <= rankMax; ++r) {
+		for (int n = numMin; n <= numMax; ++n) {
+			armstrongTest(n, r);
+		}
+	}
+}
+
 int parseArgToInt(char* arg){
 	int result;
 	std::istringstream ss{arg};
@@ -69,19 +78,24 @@ int main(int argc, char* argv[]) {
 	} else if (argc == 4) {
 		//3 arguments: {numMin, numMax, rank}
 		//faster loop when end condition doesn't call a function every time. the same for rank.
-		int nmax = parseArgToInt(argv[2]);
-		int rank = parseArgToInt(argv[3]);
-		for (int n = parseArgToInt(argv[1]); n <= nmax; ++n) armstrongTest(n, rank);
+		//int nmax = parseArgToInt(argv[2]);
+		//int rank = parseArgToInt(argv[3]);
+		//for (int n = parseArgToInt(argv[1]); n <= nmax; ++n) armstrongTest(n, rank);
+		std::thread t(armstrongRange, parseArgToInt(argv[1]), parseArgToInt(argv[2]), parseArgToInt(argv[3]), parseArgToInt(argv[3]));
+		t.join();
 	} else if (argc > 4) {
 		//4 arguments: {numMin, numMax, rankMin, rankMax}
 		//faster loop when end condition doesn't call a function every time.
+		//std::thread t(armstrongRange, parseArgToInt(argv[1]), parseArgToInt(argv[2]), parseArgToInt(argv[3]), parseArgToInt(argv[4]));
+		//t.join();
 
-
+		
 		int rmax = parseArgToInt(argv[4]);
 		int nmax = parseArgToInt(argv[2]);
 		for (int r = parseArgToInt(argv[3]); r <= rmax; ++r)
 			for (int n = parseArgToInt(argv[1]); n <= nmax; ++n)
 				armstrongTest(n, r);
+		
 	}
 
 }
