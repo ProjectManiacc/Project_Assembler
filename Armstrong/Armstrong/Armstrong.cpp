@@ -14,7 +14,7 @@ int power(int x, int y) {
 
 std::vector<int> splitNumber(int number) {
 	std::vector<int> result;
-	while (number > 1) {
+	while (number >= 1) {
 		result.push_back((int)(number - 10*(number/10)));
 		number /= 10;
 	}
@@ -30,13 +30,14 @@ void armstrongTest(int number, int toPower) {
 	for (auto i : digits) {
 		sum += power(i,toPower);
 	}
+	//std::cout << "\nTested number: " << number << std::endl;
 	if (sum == number) {
 		std::cout << "\nTested number: " << number << std::endl;
 		for (auto i : digits) {
 			std::cout << i << "^"<< toPower <<" + ";
 		}
 		std::cout << "\033[2D= " << sum << std::endl;
-		std::cout << "This is Armstrong's number A"<< toPower <<"." << std::endl;
+		std::cout << "This is Armstrong's number for the power of "<< toPower <<"." << std::endl;
 	}
 }
 
@@ -48,6 +49,10 @@ int parseArgToInt(char* arg){
 }
 
 int main(int argc, char* argv[]) {
+	std::cout << "Arguments: " << argc;
+	for (int i = 0; i < argc; i++) {
+		std::cout << "\nArg: " << i << " " << argv[i];
+	}
 	if (argc < 2) {
 		//user provided no arguments - print usage info
 		std::cout << "\nUsage:\n./armstrong number\t\t\ttest if number equals sum of digits each to power of 3\n./Armstrong number ra";
@@ -64,16 +69,18 @@ int main(int argc, char* argv[]) {
 	} else if (argc == 4) {
 		//3 arguments: {numMin, numMax, rank}
 		//faster loop when end condition doesn't call a function every time. the same for rank.
-		int nmax = parseArgToInt(argv[1]);
-		int rank = parseArgToInt(argv[2]);
-		for (int n = parseArgToInt(argv[0]); n <= nmax; ++n) armstrongTest(n, rank);
+		int nmax = parseArgToInt(argv[2]);
+		int rank = parseArgToInt(argv[3]);
+		for (int n = parseArgToInt(argv[1]); n <= nmax; ++n) armstrongTest(n, rank);
 	} else if (argc > 4) {
 		//4 arguments: {numMin, numMax, rankMin, rankMax}
 		//faster loop when end condition doesn't call a function every time.
-		int rmax = parseArgToInt(argv[3]);
-		int nmax = parseArgToInt(argv[1]);
-		for (int r = parseArgToInt(argv[2]); r <= rmax; ++r)
-			for (int n = parseArgToInt(argv[0]); n <= nmax; ++n)
+
+
+		int rmax = parseArgToInt(argv[4]);
+		int nmax = parseArgToInt(argv[2]);
+		for (int r = parseArgToInt(argv[3]); r <= rmax; ++r)
+			for (int n = parseArgToInt(argv[1]); n <= nmax; ++n)
 				armstrongTest(n, r);
 	}
 
