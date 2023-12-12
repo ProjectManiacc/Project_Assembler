@@ -10,7 +10,7 @@ asm_power PROC base:DWORD, exponent:DWORD
 
 power_loop:
     cmp ecx, 0          ; Check if the exponent is equal to 0
-    je  power_done      ; If yes, exit the loop
+    je  power_done      ; If yes, exit the loop with result 1
 
     imul eax, base      ; Multiply the result by the base
     dec ecx             ; Decrement the exponent

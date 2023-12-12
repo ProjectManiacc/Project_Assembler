@@ -4,7 +4,7 @@
 #include <vector>
 #include <thread>
 
-extern "C" int asm_func(int first_number, int last_number);
+extern "C" int asm_power(int first_number, int last_number);
 
 int power(int x, int y) {
 	//we don't want to import whole math.c for just integer power.
@@ -29,7 +29,8 @@ void armstrongTest(int number, int toPower) {
 	std::vector<int> digits = splitNumber(number);
 	int sum = 0;
 	for (auto i : digits) {
-		sum += power(i,toPower);
+		sum += asm_power(i,toPower);
+		//sum += power(i,toPower);
 	}
 	//std::cout << "\nTested number: " << number << std::endl;
 	if (sum == number) {
