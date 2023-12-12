@@ -88,7 +88,7 @@ int main(int argc, char* argv[]) {
 		std::cout << "take if ranges are too wide\nAuthors:\n\tKrystian Gagracz\n\tPiotr Kluziok\n\tPawel Mielimonka\n\n";
 	}
 	else if (argc == 2) {
-		//1 argmuent: number to test, exponent = 3.
+		//1 argmuent: number to test.
 		armstrongTest(parseArgToInt(argv[1]));
 	}
 	else if (argc == 3) {
