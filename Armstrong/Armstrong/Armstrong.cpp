@@ -105,16 +105,17 @@ int main(int argc, char* argv[]) {
 		t.join();
 	}
 	else if (argc > 4) {
-		//4 arguments: {numMin, numMax, exponentMin, exponentMax}
+		//4 arguments: {1: numMin, 2: numMax, 3: exponentMin, 4: exponentMax}
 		//faster loop when end condition doesn't call a function every time.
 		//std::thread t(armstrongRange, parseArgToInt(argv[1]), parseArgToInt(argv[2]), parseArgToInt(argv[3]), parseArgToInt(argv[4]));
 		//t.join();
-		int rmax = parseArgToInt(argv[4]);
-		int nmax = parseArgToInt(argv[2]);
-		for (int r = parseArgToInt(argv[3]); r <= rmax; ++r)
-			for (int n = parseArgToInt(argv[1]); n <= nmax; ++n)
+		int minTestedNumber = parseArgToInt(argv[1]);
+		int maxTestedNumber = parseArgToInt(argv[2]);
+		int minExponent = parseArgToInt(argv[3]);
+		int maxExponent = parseArgToInt(argv[4]);
+		for (int r = minExponent; r <= maxExponent; ++r)
+			for (int n = minTestedNumber; n <= maxTestedNumber; ++n)
 				armstrongTest(n, r);
-
 	}
 
 }
