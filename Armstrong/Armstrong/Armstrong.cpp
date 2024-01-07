@@ -3,8 +3,11 @@
 #include <sstream>
 #include <vector>
 #include <thread>
+#include <Windows.h>
 
-extern "C" int asm_power(int first_number, int last_number);
+//[DLLImport("C:\\Users\\piotrek\\Desktop\\Project_Assembler\\Armstrong\\x64\\Debug\\Assembler.dll")]
+extern "C" __declspec(dllimport) int asm_power(int first_number, int last_number);
+
 
 int power(int x, int y) {
 	//we don't want to import whole math.c for just integer power.
@@ -25,8 +28,8 @@ std::vector<int> splitNumber(int number) {
 int getSumOfNumberDigitsPower(std::vector<int> numbers, int exponent) {
 	int sum = 0;
 	for (auto i : numbers) {
-		//sum += asm_power(i, exponent);
-		sum += power(i, exponent);
+		sum += asm_power(i, exponent);
+		//sum += power(i, exponent);
 	}
 	return sum;
 }
