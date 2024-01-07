@@ -25,8 +25,8 @@ std::vector<int> splitNumber(int number) {
 int getSumOfNumberDigitsPower(std::vector<int> numbers, int exponent) {
 	int sum = 0;
 	for (auto i : numbers) {
-		sum += asm_power(i, exponent);
-		//sum += power(i, exponent);
+		//sum += asm_power(i, exponent);
+		sum += power(i, exponent);
 	}
 	return sum;
 }
@@ -41,7 +41,7 @@ void printArmstrongTestResultMessage(bool succeeded, int number, int exponent) {
 		std::cout << "This is Armstrong's number for the power of " << exponent << "." << std::endl;
 		return;
 	}
-	std::cout << "\nThis is not an Armstrong's number";
+	//std::cout << "\nThis is not an Armstrong's number";
 }
 
 /* This function only tests number and prints out result to screen */
@@ -75,10 +75,10 @@ int parseArgToInt(const char* arg) {
 }
 
 int main(int argc, char* argv[]) {
-	std::cout << "Arguments: " << argc - 1;
+	/*std::cout << "Arguments: " << argc - 1;
 	for (int i = 1; i < argc; i++) {
 		std::cout << "\nArg " << i << ": " << argv[i];
-	}
+	}*/
 	if (argc < 2) {
 		//user provided no arguments - print usage info
 		std::cout << "\nUsage:\n./armstrong number\t\t\ttest if number with n digits equals sum of digits each to power of n\n./Armstrong number ex";
