@@ -75,10 +75,7 @@ int parseArgToInt(const char* arg) {
 }
 
 int main(int argc, char* argv[]) {
-	/*std::cout << "Arguments: " << argc - 1;
-	for (int i = 1; i < argc; i++) {
-		std::cout << "\nArg " << i << ": " << argv[i];
-	}*/
+	
 	if (argc < 2) {
 		//user provided no arguments - print usage info
 		std::cout << "\nUsage:\n./armstrong number\t\t\ttest if number with n digits equals sum of digits each to power of n\n./Armstrong number ex";
@@ -107,15 +104,16 @@ int main(int argc, char* argv[]) {
 	else if (argc > 4) {
 		//4 arguments: {1: numMin, 2: numMax, 3: exponentMin, 4: exponentMax}
 		//faster loop when end condition doesn't call a function every time.
-		//std::thread t(armstrongRange, parseArgToInt(argv[1]), parseArgToInt(argv[2]), parseArgToInt(argv[3]), parseArgToInt(argv[4]));
-		//t.join();
-		int minTestedNumber = parseArgToInt(argv[1]);
+		std::thread t(armstrongRange, parseArgToInt(argv[1]), parseArgToInt(argv[2]), parseArgToInt(argv[3]), parseArgToInt(argv[4]));
+		t.join();
+		/*int minTestedNumber = parseArgToInt(argv[1]);
 		int maxTestedNumber = parseArgToInt(argv[2]);
 		int minExponent = parseArgToInt(argv[3]);
 		int maxExponent = parseArgToInt(argv[4]);
 		for (int r = minExponent; r <= maxExponent; ++r)
 			for (int n = minTestedNumber; n <= maxTestedNumber; ++n)
 				armstrongTest(n, r);
+		*/
 	}
 
 }
