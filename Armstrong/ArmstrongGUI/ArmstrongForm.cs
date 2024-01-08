@@ -34,25 +34,6 @@ namespace ArmstrongGUI
             outputText.Text += "\tPawel Mielimonka\n";
         }
 
-        private void minNumberInput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void minExponentInput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void maxNumberInput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void maxExponentInput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void calculateButton_Click(object sender, EventArgs e)
         {
@@ -73,7 +54,6 @@ namespace ArmstrongGUI
                 maxExponent = int.Parse(maxExponentInput.Text);
                 maxNumber = int.Parse(maxNumberInput.Text);
 
-                // Call ArmstrongRange and append the results
                 armstrong.ArmstrongRange(minNumber, maxNumber, minExponent, maxExponent);
                 outputText.Text = armstrong.Result + Environment.NewLine;
             }
@@ -82,14 +62,12 @@ namespace ArmstrongGUI
                 minExponent = int.Parse(minExponentInput.Text);
                 maxNumber = int.Parse(maxNumberInput.Text);
 
-                // Call ArmstrongRange and append the results
                 armstrong.ArmstrongRange(minNumber, maxNumber, minExponent, minExponent);
                 outputText.Text = armstrong.Result + Environment.NewLine;
             }
             else if (!string.IsNullOrEmpty(minExponentInput.Text))
             {
                 minExponent = int.Parse(minExponentInput.Text);
-                // Call ArmstrongTest with two arguments
                 armstrong.ArmstrongRange(minNumber, minNumber, minExponent, minExponent);
                 outputText.Text = armstrong.Result;
                 if (string.IsNullOrEmpty(outputText.Text))
@@ -100,7 +78,6 @@ namespace ArmstrongGUI
             }
             else
             {
-                // Call ArmstrongTest with one argument
                 armstrong.ArmstrongRange(minNumber, minNumber, 3, 3);
                 outputText.Text = armstrong.Result;
                 if (string.IsNullOrEmpty(outputText.Text))
@@ -113,10 +90,5 @@ namespace ArmstrongGUI
             bool check = true;
         }
 
-
-        private void outputText_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
