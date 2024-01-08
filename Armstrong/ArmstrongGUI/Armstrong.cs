@@ -1,8 +1,34 @@
-﻿using System;
+﻿/*using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace ArmstrongGUI
+{
+    internal static class Program
+    {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
+        }
+    }
+}
+*/
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace ArmstrongGUI
 {
@@ -10,6 +36,8 @@ namespace ArmstrongGUI
     {
         [DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
         extern static int asm_power(int first_number, int last_number);
+        public string Result { get; private set; }
+
 
         static int Power(int x, int y)
         {
@@ -44,24 +72,36 @@ namespace ArmstrongGUI
             return sum;
         }
 
-        static void PrintArmstrongTestResultMessage(bool succeeded, int number, int exponent)
+         void PrintArmstrongTestResultMessage(bool succeeded, int number, int exponent)
         {
+           
             List<int> digits = SplitNumber(number);
             if (succeeded)
             {
+
+                StringBuilder resultBuilder = new StringBuilder();
+
                 foreach (var i in digits)
                 {
-                    Console.Write($"{i}^{exponent} + ");
+                    resultBuilder.Append($"{i}^{exponent} + ");
                 }
-                Console.CursorLeft -= 2;
-                Console.WriteLine($"= {number}");
-                Console.WriteLine($"This is Armstrong's number for the power of {exponent}.");
-                return;
+                //Console.CursorLeft -= 2;
+                resultBuilder.Remove(resultBuilder.Length - 2, 2); // Remove the trailing " + "
+                resultBuilder.Append($"= {number}");
+                resultBuilder.AppendLine();
+                resultBuilder.Append($"This is Armstrong's number for the power of {exponent}.");
+                resultBuilder.AppendLine();
+                Result += resultBuilder.ToString();
             }
+            /*else{
+                Result = "\nThis is not an Armstrong's number";
+            }*/
+                
+            
             // Console.WriteLine("\nThis is not an Armstrong's number");
         }
 
-        static void ArmstrongTest(int number)
+        public void ArmstrongTest(int number)
         {
             List<int> digits = SplitNumber(number);
             int exponent = digits.Count;
@@ -69,15 +109,16 @@ namespace ArmstrongGUI
             PrintArmstrongTestResultMessage(sum == number, number, exponent);
         }
 
-        static void ArmstrongTest(int number, int exponent)
+        public void ArmstrongTest(int number, int exponent)
         {
             List<int> digits = SplitNumber(number);
             int sum = GetSumOfNumberDigitsPower(digits, exponent);
             PrintArmstrongTestResultMessage(sum == number, number, exponent);
         }
 
-        static void ArmstrongRange(int numMin, int numMax, int exponentMin, int exponentMax)
+        public void ArmstrongRange(int numMin, int numMax, int exponentMin, int exponentMax)
         {
+            Result = "";
             for (int r = exponentMin; r <= exponentMax; ++r)
             {
                 for (int n = numMin; n <= numMax; ++n)
@@ -94,9 +135,14 @@ namespace ArmstrongGUI
             return result;
         }
 
+        [STAThread]
         static void Main(string[] args)
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new ArmstrongForm());
 
+            /*
             //Console.WriteLine("I AM WORKING");
             if (args.Length < 1)
             {
@@ -115,12 +161,12 @@ namespace ArmstrongGUI
             else if (args.Length == 1)
             {
                 // 1 argument: number to test.
-                ArmstrongTest(ParseArgToInt(args[0]));
+                //ArmstrongTest(ParseArgToInt(args[0]));
             }
             else if (args.Length == 2)
             {
                 // 2 arguments: {number, exponent}
-                ArmstrongTest(ParseArgToInt(args[0]), ParseArgToInt(args[1]));
+                //ArmstrongTest(ParseArgToInt(args[0]), ParseArgToInt(args[1]));
             }
             else if (args.Length == 3)
             {
@@ -140,15 +186,16 @@ namespace ArmstrongGUI
                 Thread t = new Thread(() => ArmstrongRange(ParseArgToInt(args[0]), ParseArgToInt(args[1]), ParseArgToInt(args[2]), ParseArgToInt(args[3])));
                 t.Start();
                 t.Join();
-                /* int minTestedNumber = ParseArgToInt(args[1]);
+                int minTestedNumber = ParseArgToInt(args[1]);
                 int maxTestedNumber = ParseArgToInt(args[2]);
                 int minExponent = ParseArgToInt(args[3]);
                 int maxExponent = ParseArgToInt(args[4]);
                 for (int r = minExponent; r <= maxExponent; ++r)
                     for (int n = minTestedNumber; n <= maxTestedNumber; ++n)
                         ArmstrongTest(n, r);
-                */
+                
             }
+            */
         }
     }
 }
