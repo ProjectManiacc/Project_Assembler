@@ -45,12 +45,14 @@
             // 
             this.title.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.title.Location = new System.Drawing.Point(299, 49);
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(235, 50);
             this.title.TabIndex = 0;
             this.title.Text = "Armstrong Number";
             this.title.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.title.Click += new System.EventHandler(this.title_Click);
             // 
             // minNumberLabel
             // 
@@ -122,6 +124,7 @@
             // 
             // calculateButton
             // 
+            this.calculateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.calculateButton.Location = new System.Drawing.Point(315, 227);
             this.calculateButton.Name = "calculateButton";
             this.calculateButton.Size = new System.Drawing.Size(206, 86);
@@ -132,12 +135,12 @@
             // 
             // outputText
             // 
-            this.outputText.Location = new System.Drawing.Point(158, 341);
+            this.outputText.Location = new System.Drawing.Point(48, 341);
             this.outputText.Multiline = true;
             this.outputText.Name = "outputText";
             this.outputText.ReadOnly = true;
             this.outputText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.outputText.Size = new System.Drawing.Size(511, 178);
+            this.outputText.Size = new System.Drawing.Size(742, 192);
             this.outputText.TabIndex = 10;
             // 
             // ArmstrongForm

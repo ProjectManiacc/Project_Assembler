@@ -22,17 +22,20 @@ namespace ArmstrongGUI
 
         private void ArmstrongForm_Load(object sender, EventArgs e)
         {
-            outputText.Text = "Usage:\n";
-            outputText.Text += "./armstrong number\t\t\ttest if number with n digits equals sum of digits each to power of n\n";
-            outputText.Text += "./Armstrong number exponent\ttest if Armstrong's number for power of 'exponent'\n";
-            outputText.Text += "./armstrong number1 number2 exponent\tsearch all Armstrong numbers in range <number1,number2> for power of 'exponent'\n";
-            outputText.Text += "./armstrong num1 num2 exponent1 exponent2\tsearch all Armstrong numbers in range <num1,num2> for all powers from 'exponent1' to 'exponent2' including.\n";
-            outputText.Text += "Please consider time it can take if ranges are too wide\n";
-            outputText.Text += "Authors:\n";
-            outputText.Text += "\tKrystian Gagracz\n";
-            outputText.Text += "\tPiotr Kluziok\n";
-            outputText.Text += "\tPawel Mielimonka\n";
+            outputText.Text = "Armstrong Number Checker GUI" + Environment.NewLine;
+            outputText.Text += "Usage:" + Environment.NewLine;
+            outputText.Text += "1. ./armstrong minNumber\t\t\t\t\t- Test if a number with n digits equals the sum of digits each to the power of n." + Environment.NewLine;
+            outputText.Text += "2. ./Armstrong minNumber minExponent\t\t\t\t- Test if it's an Armstrong's number for the given power." + Environment.NewLine;
+            outputText.Text += "3. ./armstrong minNumber maxNumber minExponent\t\t- Search all Armstrong numbers in the range <number1, number2> for the power of 'exponent'." + Environment.NewLine;
+            outputText.Text += "4. ./armstrong minNumber maxNumber minExponent maxExponent\t- Search all Armstrong numbers in the range <num1, num2> for all powers from 'exponent1' to 'exponent2' (inclusive)." + Environment.NewLine;
+            outputText.Text += Environment.NewLine + "Please consider the time it can take if ranges are too wide." + Environment.NewLine;
+            outputText.Text += Environment.NewLine + "Authors:" + Environment.NewLine;
+            outputText.Text += "\tKrystian Gagracz" + Environment.NewLine;
+            outputText.Text += "\tPiotr Kluziok" + Environment.NewLine;
+            outputText.Text += "\tPawel Mielimonka" + Environment.NewLine;
         }
+
+
 
 
         private async void calculateButton_Click(object sender, EventArgs e)
@@ -97,5 +100,9 @@ namespace ArmstrongGUI
 
         }
 
+        private void title_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
