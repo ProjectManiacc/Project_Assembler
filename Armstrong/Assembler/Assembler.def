@@ -1,2 +1,0 @@
-LIBRARY Assembler
-EXPORTS asm_power

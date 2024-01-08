@@ -3,37 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Armstrong", "Armstrong\Armstrong.vcxproj", "{D42E944C-76BD-4FAC-B52D-3FCDDD0712E3}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E7192720-DF76-4730-899F-7B1FE7C5EFEE} = {E7192720-DF76-4730-899F-7B1FE7C5EFEE}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Assembler", "Assembler\Assembler.vcxproj", "{E7192720-DF76-4730-899F-7B1FE7C5EFEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArmstrongGUI", "ArmstrongGUI\ArmstrongGUI.csproj", "{6A030145-5498-4181-95BE-4986605D2485}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D42E944C-76BD-4FAC-B52D-3FCDDD0712E3}.Debug|x64.ActiveCfg = Debug|x64
-		{D42E944C-76BD-4FAC-B52D-3FCDDD0712E3}.Debug|x64.Build.0 = Debug|x64
-		{D42E944C-76BD-4FAC-B52D-3FCDDD0712E3}.Debug|x86.ActiveCfg = Debug|Win32
-		{D42E944C-76BD-4FAC-B52D-3FCDDD0712E3}.Debug|x86.Build.0 = Debug|Win32
-		{D42E944C-76BD-4FAC-B52D-3FCDDD0712E3}.Release|x64.ActiveCfg = Release|x64
-		{D42E944C-76BD-4FAC-B52D-3FCDDD0712E3}.Release|x64.Build.0 = Release|x64
-		{D42E944C-76BD-4FAC-B52D-3FCDDD0712E3}.Release|x86.ActiveCfg = Release|Win32
-		{D42E944C-76BD-4FAC-B52D-3FCDDD0712E3}.Release|x86.Build.0 = Release|Win32
-		{E7192720-DF76-4730-899F-7B1FE7C5EFEE}.Debug|x64.ActiveCfg = Debug|x64
-		{E7192720-DF76-4730-899F-7B1FE7C5EFEE}.Debug|x64.Build.0 = Debug|x64
-		{E7192720-DF76-4730-899F-7B1FE7C5EFEE}.Debug|x86.ActiveCfg = Debug|Win32
-		{E7192720-DF76-4730-899F-7B1FE7C5EFEE}.Debug|x86.Build.0 = Debug|Win32
-		{E7192720-DF76-4730-899F-7B1FE7C5EFEE}.Release|x64.ActiveCfg = Release|x64
-		{E7192720-DF76-4730-899F-7B1FE7C5EFEE}.Release|x64.Build.0 = Release|x64
-		{E7192720-DF76-4730-899F-7B1FE7C5EFEE}.Release|x86.ActiveCfg = Release|Win32
-		{E7192720-DF76-4730-899F-7B1FE7C5EFEE}.Release|x86.Build.0 = Release|Win32
+		{6A030145-5498-4181-95BE-4986605D2485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A030145-5498-4181-95BE-4986605D2485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A030145-5498-4181-95BE-4986605D2485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A030145-5498-4181-95BE-4986605D2485}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

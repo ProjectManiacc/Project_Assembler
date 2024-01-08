@@ -1,0 +1,15 @@
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\bin\Debug\net8.0\ArmstrongGUI.exe
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\bin\Debug\net8.0\ArmstrongGUI.deps.json
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\bin\Debug\net8.0\ArmstrongGUI.runtimeconfig.json
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\bin\Debug\net8.0\ArmstrongGUI.dll
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\bin\Debug\net8.0\ArmstrongGUI.pdb
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\net8.0\ArmstrongGUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\net8.0\ArmstrongGUI.AssemblyInfoInputs.cache
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\net8.0\ArmstrongGUI.AssemblyInfo.cs
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\net8.0\ArmstrongGUI.csproj.CoreCompileInputs.cache
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\net8.0\ArmstrongGUI.sourcelink.json
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\net8.0\ArmstrongGUI.dll
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\net8.0\refint\ArmstrongGUI.dll
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\net8.0\ArmstrongGUI.pdb
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\net8.0\ArmstrongGUI.genruntimeconfig.cache
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\net8.0\ref\ArmstrongGUI.dll
