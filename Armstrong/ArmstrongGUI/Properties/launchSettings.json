@@ -2,7 +2,7 @@
   "profiles": {
     "ArmstrongGUI": {
       "commandName": "Project",
-      "commandLineArgs": "100 10000 3 5"
+      "commandLineArgs": "100 10000"
     }
   }
 }

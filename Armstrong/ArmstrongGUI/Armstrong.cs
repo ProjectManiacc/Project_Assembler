@@ -8,7 +8,7 @@ namespace ArmstrongGUI
 {
     class Armstrong
     {
-        [DllImport("C:\\Users\\piotrek\\Desktop\\Project_Assembler\\Armstrong\\ArmstrongGUI\\bin\\x64\\Debug\\Assembler.dll")]
+        [DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
         extern static int asm_power(int first_number, int last_number);
 
         static int Power(int x, int y)
@@ -38,7 +38,7 @@ namespace ArmstrongGUI
             int sum = 0;
             foreach (var i in numbers)
             {
-                // sum += asm_power(i, exponent);
+                //sum += asm_power(i, exponent);
                 sum += Power(i, exponent);
             }
             return sum;
@@ -97,7 +97,7 @@ namespace ArmstrongGUI
         static void Main(string[] args)
         {
 
-            Console.WriteLine("I AM WORKING");
+            //Console.WriteLine("I AM WORKING");
             if (args.Length < 1)
             {
                 // User provided no arguments - print usage info

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ArmstrongGUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71c0abd68fdc372563a40ef5872f9094f82ead2c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("ArmstrongGUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ArmstrongGUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
