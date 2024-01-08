@@ -1,7 +1,7 @@
-
 .code
 ALIGN 16
 
+PUBLIC asm_power
 asm_power PROC base:DWORD, exponent:DWORD
     mov eax, 1         ; Initialize the result to 1
 

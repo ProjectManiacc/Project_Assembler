@@ -1,0 +1,9 @@
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\bin\Debug\ArmstrongGUI.exe.config
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\bin\Debug\ArmstrongGUI.exe
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\bin\Debug\ArmstrongGUI.pdb
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.csproj.AssemblyReference.cache
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.Properties.Resources.resources
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.csproj.GenerateResource.cache
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.csproj.CoreCompileInputs.cache
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.exe
+C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.pdb
