@@ -68,7 +68,6 @@
             this.minNumberInput.Size = new System.Drawing.Size(100, 20);
             this.minNumberInput.TabIndex = 2;
             this.minNumberInput.Text = "111";
-            this.minNumberInput.TextChanged += new System.EventHandler(this.minNumberInput_TextChanged);
             // 
             // minExponentInput
             // 
@@ -77,7 +76,6 @@
             this.minExponentInput.Size = new System.Drawing.Size(100, 20);
             this.minExponentInput.TabIndex = 4;
             this.minExponentInput.Text = "3";
-            this.minExponentInput.TextChanged += new System.EventHandler(this.minExponentInput_TextChanged);
             // 
             // minExponentLabel
             // 
@@ -95,7 +93,6 @@
             this.maxNumberInput.Size = new System.Drawing.Size(100, 20);
             this.maxNumberInput.TabIndex = 6;
             this.maxNumberInput.Text = "11111";
-            this.maxNumberInput.TextChanged += new System.EventHandler(this.maxNumberInput_TextChanged);
             // 
             // maxNumberLabel
             // 
@@ -113,7 +110,6 @@
             this.maxExponentInput.Size = new System.Drawing.Size(100, 20);
             this.maxExponentInput.TabIndex = 8;
             this.maxExponentInput.Text = "5";
-            this.maxExponentInput.TextChanged += new System.EventHandler(this.maxExponentInput_TextChanged);
             // 
             // maxExponentLabel
             // 
@@ -143,7 +139,6 @@
             this.outputText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.outputText.Size = new System.Drawing.Size(511, 178);
             this.outputText.TabIndex = 10;
-            this.outputText.TextChanged += new System.EventHandler(this.outputText_TextChanged);
             // 
             // ArmstrongForm
             // 

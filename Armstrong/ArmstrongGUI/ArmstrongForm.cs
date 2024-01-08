@@ -35,10 +35,9 @@ namespace ArmstrongGUI
         }
 
 
-        private void calculateButton_Click(object sender, EventArgs e)
+        private async void calculateButton_Click(object sender, EventArgs e)
         {
-            // Clear the outputText at the beginning of each click
-            outputText.Text = "This is not Armstrong's number";
+            
 
             int minNumber, maxNumber, minExponent, maxExponent;
 
@@ -54,21 +53,28 @@ namespace ArmstrongGUI
                 maxExponent = int.Parse(maxExponentInput.Text);
                 maxNumber = int.Parse(maxNumberInput.Text);
 
-                armstrong.ArmstrongRange(minNumber, maxNumber, minExponent, maxExponent);
-                outputText.Text = armstrong.Result + Environment.NewLine;
+                await Task.Run(() =>
+                {
+                    armstrong.ArmstrongRange(minNumber, maxNumber, minExponent, maxExponent);
+                }); outputText.Text = armstrong.Result + Environment.NewLine;
             }
             else if (!string.IsNullOrEmpty(maxNumberInput.Text))
             {
                 minExponent = int.Parse(minExponentInput.Text);
                 maxNumber = int.Parse(maxNumberInput.Text);
 
-                armstrong.ArmstrongRange(minNumber, maxNumber, minExponent, minExponent);
-                outputText.Text = armstrong.Result + Environment.NewLine;
+                await Task.Run(() =>
+                {
+                    armstrong.ArmstrongRange(minNumber, maxNumber, minExponent, minExponent);
+                }); outputText.Text = armstrong.Result + Environment.NewLine;
             }
             else if (!string.IsNullOrEmpty(minExponentInput.Text))
             {
                 minExponent = int.Parse(minExponentInput.Text);
-                armstrong.ArmstrongRange(minNumber, minNumber, minExponent, minExponent);
+                await Task.Run(() =>
+                {
+                    armstrong.ArmstrongRange(minNumber, minNumber, minExponent, minExponent);
+                });
                 outputText.Text = armstrong.Result;
                 if (string.IsNullOrEmpty(outputText.Text))
                 {
@@ -78,8 +84,10 @@ namespace ArmstrongGUI
             }
             else
             {
-                armstrong.ArmstrongRange(minNumber, minNumber, 3, 3);
-                outputText.Text = armstrong.Result;
+                await Task.Run(() =>
+                {
+                    armstrong.ArmstrongRange(minNumber, minNumber, 3, 3);
+                }); outputText.Text = armstrong.Result;
                 if (string.IsNullOrEmpty(outputText.Text))
                 {
                     outputText.Text = "\nThis is not Armstrong's number";
@@ -87,7 +95,6 @@ namespace ArmstrongGUI
                 outputText.Text += Environment.NewLine;
             }
 
-            bool check = true;
         }
 
     }
