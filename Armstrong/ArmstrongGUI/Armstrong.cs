@@ -14,6 +14,8 @@ namespace ArmstrongGUI
         public static extern void asm_power(short[] vector, int exponent, out short result1, out short result2, out short result3, out short result4);
         [DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler6.dll")]
         public static extern void asm_power6(int[] vector, int exponent, out int result1, out int result2);
+        
+        //Collector for output message
         public string Result { get; private set; }
 
 
@@ -74,6 +76,7 @@ namespace ArmstrongGUI
             }
             return result.Sum();
         }
+        
         int CountArmstrongSum6To10(List<int> numbers, int exponent) {
             Digits4B vectors = new Digits4B(numbers);
             Digits4B result = new Digits4B();
@@ -87,54 +90,65 @@ namespace ArmstrongGUI
             return result.Sum();
         }
 
-         void PrintArmstrongTestResultMessage(bool succeeded, int number, int exponent)
+        void PrintArmstrongTestResultMessage(int number, int exponent)
         {
-           
             List<int> digits = SplitNumber(number);
-            if (succeeded)
+            StringBuilder resultBuilder = new StringBuilder();
+            foreach (var i in digits)
             {
-
-                StringBuilder resultBuilder = new StringBuilder();
-
-                foreach (var i in digits)
-                {
-                    resultBuilder.Append($"{i}^{exponent} + ");
-                }
-                //Console.CursorLeft -= 2;
-                resultBuilder.Remove(resultBuilder.Length - 2, 2); // Remove the trailing " + "
-                resultBuilder.Append($"= {number}");
-                resultBuilder.AppendLine();
-                resultBuilder.Append($"This is Armstrong's number for the power of {exponent}.");
-                resultBuilder.AppendLine();
-                Result += resultBuilder.ToString();
+                resultBuilder.Append($"{i}^{exponent} + ");
             }
-           
+            resultBuilder.Remove(resultBuilder.Length - 2, 2); // Remove the trailing " + "
+            resultBuilder.Append($"= {number}");
+            resultBuilder.AppendLine();
+            resultBuilder.Append($"This is Armstrong's number for the power of {exponent}.");
+            resultBuilder.AppendLine();
+            Result += resultBuilder.ToString();
         }
 
         public void ArmstrongTest(int number)
         {
+            Result = "";
             List<int> digits = SplitNumber(number);
             int exponent = digits.Count;
-            int sum = CountArmstrongSum(digits, exponent);
-            PrintArmstrongTestResultMessage(sum == number, number, exponent);
+            if (number == CountArmstrongSum(digits, exponent)
+                PrintArmstrongTestResultMessage(number, exponent);
         }
 
         public void ArmstrongTest(int number, int exponent)
         {
-            List<int> digits = SplitNumber(number);
-            int sum = CountArmstrongSum(digits, exponent);
-            PrintArmstrongTestResultMessage(sum == number, number, exponent);
+            Result = "";
+            if (number == CountArmstrongSum(SplitNumber(number), exponent)
+                PrintArmstrongTestResultMessage(number, exponent);
         }
 
+        public void ArmstrongRange(int numMin, int numMax, int exponentMin)
+        {
+            Result = "";
+            for (int n = numMin; n <= numMax; ++n)
+            {
+                ArmstrongTest(n, exponentMin);
+            }
+        }
+                
         public void ArmstrongRange(int numMin, int numMax, int exponentMin, int exponentMax)
         {
-            //Result = "";
+            Result = "";
             for (int r = exponentMin; r <= exponentMax; ++r)
             {
                 for (int n = numMin; n <= numMax; ++n)
                 {
                     ArmstrongTest(n, r);
                 }
+            }
+        }
+
+        public void TrueArmstrongRange(int numMin, int numMax)
+        {
+            Result = "";
+            for (int i = numMin; i <= numMax; ++i)
+            {
+                ArmstrongTest(i);
             }
         }
 
