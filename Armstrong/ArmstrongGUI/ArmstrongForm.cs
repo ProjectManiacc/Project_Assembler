@@ -34,70 +34,57 @@ namespace ArmstrongGUI
             outputText.Text += "\tPiotr Kluziok" + Environment.NewLine;
             outputText.Text += "\tPawel Mielimonka" + Environment.NewLine;
         }
-
-
-
-
         private async void calculateButton_Click(object sender, EventArgs e)
         {
-            
-
             int minNumber, maxNumber, minExponent, maxExponent;
-
-            if (!int.TryParse(minNumberInput.Text, out minNumber))
+            bool isMinNum = int.TryParse(minNumberInput.Text, out minNumber);
+            bool isMaxNum = int.TryParse(maxNumberInput.Text, out maxNumber);
+            bool isMinExp = int.TryParse(minExponentInput.Text, out minExponent);
+            bool isMaxExp = int.TryParse(maxExponentInput.Text, out maxExponent) && isMinExp;
+            //at this point we know what was parsable, and it's already parsed.
+            if (!isMinNum)
             {
                 outputText.Text = "Invalid input for minimum number.";
                 return;
             }
 
-            if (!string.IsNullOrEmpty(maxExponentInput.Text))
+            if (isMaxExp)
             {
-                minExponent = int.Parse(minExponentInput.Text);
-                maxExponent = int.Parse(maxExponentInput.Text);
-                maxNumber = int.Parse(maxNumberInput.Text);
-
-                await Task.Run(() =>
-                {
-                    armstrong.ArmstrongRange(minNumber, maxNumber, minExponent, maxExponent);
-                }); outputText.Text = armstrong.Result + Environment.NewLine;
+                await Task.Run(() => armstrong.ArmstrongRange(minNumber, maxNumber, minExponent, maxExponent));
             }
-            else if (!string.IsNullOrEmpty(maxNumberInput.Text))
+            else 
             {
-                minExponent = int.Parse(minExponentInput.Text);
-                maxNumber = int.Parse(maxNumberInput.Text);
-
-                await Task.Run(() =>
+                if (isMaxNum)
                 {
-                    armstrong.ArmstrongRange(minNumber, maxNumber, minExponent, minExponent);
-                }); outputText.Text = armstrong.Result + Environment.NewLine;
+                    if (isMinExp)
+                    {
+                        await Task.Run(() => armstrong.ArmstrongRange(minNumber, maxNumber, minExponent));
+                    }
+                    else
+                    {
+                        await Task.Run(() => armstrong.TrueArmstrongRange(minNumber, maxNumber));
+                    }
+                }
+                else
+                {
+                    if (isMinExp) 
+                    {
+                        await Task.Run(() => armstrong.ArmstrongTest(minNumber, minExponent));
+                    }
+                    else
+                    {
+                        await Task.Run(() => armstrong.ArmstrongTest(minNumber));
+                    }
+                }
             }
-            else if (!string.IsNullOrEmpty(minExponentInput.Text))
+            if (string.IsNullOrEmpty(armstrong.Result))
             {
-                minExponent = int.Parse(minExponentInput.Text);
-                await Task.Run(() =>
-                {
-                    armstrong.ArmstrongRange(minNumber, minNumber, minExponent, minExponent);
-                });
+                outputText.Text = "\nNo Armstroong's number found within given boundaries!\n";
+            }
+            else 
+            {
                 outputText.Text = armstrong.Result;
-                if (string.IsNullOrEmpty(outputText.Text))
-                {
-                    outputText.Text = "\nThis is not Armstrong's number";
-                }
-                outputText.Text += Environment.NewLine;
             }
-            else
-            {
-                await Task.Run(() =>
-                {
-                    armstrong.ArmstrongRange(minNumber, minNumber, 3, 3);
-                }); outputText.Text = armstrong.Result;
-                if (string.IsNullOrEmpty(outputText.Text))
-                {
-                    outputText.Text = "\nThis is not Armstrong's number";
-                }
-                outputText.Text += Environment.NewLine;
-            }
-
         }
 
         private void title_Click(object sender, EventArgs e)
