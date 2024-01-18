@@ -1,0 +1,13 @@
+1. Add Assembler6 to solution
+2. Compile Assembler6 to dll
+3. Test if there are possible input combinations (GUI) which would result in exception.
+Implemented states are described in table below:
+minNum	  maxNum	  minExp	  maxExp	  call
+false	    -	        -	        -	        outputText.Text = "Invalid input for minimum number.";
+true	    false	    false	    -	        ArmstrongTest (minNum)
+true	    true	    false	    -	        TrueArmstrongRange (numMin, numMax)
+true	    false	    true	    -	        ArmstrongTest (minNum, minExp)
+true	    true	    true	    false	    ArmstrongRange (numMin, numMax, minExp)
+true	    true	    true	    true	    ArmstrongRange (numMin, numMax, minExp, maxExp)
+4. Test runs with call to asm_power, including edge cases (0 and 999999, exponents from 0 to 5)
+5. Test runs with call to asm_power6, including edge cases (0 and 999999, esponents 6 and 10)
