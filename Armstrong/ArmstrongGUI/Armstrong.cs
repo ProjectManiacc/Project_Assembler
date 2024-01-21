@@ -11,10 +11,10 @@ namespace ArmstrongGUI
     class Armstrong
     {
         [DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
-        public static extern void asm_power(short[] vector, int exponent, out short result1, out short result2, out short result3, out short result4);
+        public static extern void asm_power(int[] digits, int[] exponent);
         [DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler6.dll")]
         public static extern void asm_power6(int[] vector, int exponent, out int result1, out int result2);
-        
+
         //Collector for output message
         public string Result { get; private set; }
 
@@ -30,16 +30,94 @@ namespace ArmstrongGUI
             return result;
         }
 
-        List<int> SplitNumber(int number)
+        private int CountNumbers(int number)
         {
-            List<int> result = new List<int>();
-            while (number >= 1)
+            return number.ToString().Length;
+        }
+
+        private int[] FillExponentMask(int digitsLength)
+        {
+            int[] exponentMask = new int[4];
+            for (int i = 0;i < 4; i++)
             {
-                result.Add((int)(number - 10 * (number / 10)));
-                number /= 10;
+                exponentMask[i] = CountNumbers(digitsLength);
+            }
+
+            return exponentMask;
+        }
+
+        int[] SplitNumber(int number)
+        {
+            int numberLength = CountNumbers(number);
+
+            int[] result = new int[numberLength];
+            for (int i = 0; i < numberLength; ++i)
+            {
+                result[i] = number % 10;
+                number = number / 10;
+
             }
             return result;
+
         }
+
+        int CountArmstrongSum(int[] digits)
+        {
+
+            int[] exponentMask = { 4, 4, 4, 4 };//FillExponentMask(digits.Length);
+            asm_power(digits, exponentMask);
+            int sum = 0;
+            for(int i= 0 ; i < 4; i++)
+            {
+                sum += digits[i];
+            }
+            //Console.WriteLine(sum);
+            Console.WriteLine("CHUJ"+sum);
+
+            return sum;
+        }
+
+        void ArmstrongTest(int number)
+        {
+            /*Result = "";
+            int[] digits = SplitNumber(number);
+            
+            if (number == CountArmstrongSum(digits))
+                PrintArmstrongTestResultMessage(number, digits.Length);*/
+
+            int[] digits = SplitNumber(1024);
+            Console.WriteLine(CountArmstrongSum(digits));
+            //PrintArmstrongTestResultMessage(CountArmstrongSum(digits), 4);
+
+        }
+
+
+        public void ArmstrongRange(int numMin, int numMax)
+        {
+            Result = "";
+
+            for (int n = numMin; n <= numMax; ++n)
+                {
+                    ArmstrongTest(n);
+                }
+            
+        }
+        void PrintArmstrongTestResultMessage(int number, int exponent)
+        {
+            int[] digits = SplitNumber(number);
+            StringBuilder resultBuilder = new StringBuilder();
+            foreach (var i in digits)
+            {
+                resultBuilder.Append($"{i}^{exponent} + ");
+            }
+            resultBuilder.Remove(resultBuilder.Length - 2, 2); // Remove the trailing " + "
+            resultBuilder.Append($"= {number}");
+            resultBuilder.AppendLine();
+            resultBuilder.Append($"This is Armstrong's number for the power of {exponent}.");
+            resultBuilder.AppendLine();
+            Result += resultBuilder.ToString();
+        }
+
 
         /* Let's consider this: c# is compiled to code, which uses 4B ints even,
         when counting from 0 to 4. Using 2B numbers for exponents resulting in 2B
@@ -56,14 +134,14 @@ namespace ArmstrongGUI
         This means we better have 2 methods depending on exponent to better utilize CPU's
         capabilities.
         */
-        int CountArmstrongSum(List<int> numbers, int exponent)
+        /*int CountArmstrongSum(List<int> numbers, int exponent)
         {
             if (exponent < 2 || exponent > 10) return 0; //instead of throwing
-            if (exponent < 6) return CountArmstrongSum2To5(numbers, exponent);
+            if (exponent < 6) return CountArmstrongSum2To5(numbers, (short)exponent);
             return CountArmstrongSum6To10(numbers, exponent);                
         }
 
-        int CountArmstrongSum2To5(List<int> numbers, int exponent)
+        int CountArmstrongSum2To5(List<int> numbers, short exponent)
         {
             Digits2B vectors = new Digits2B(numbers);
             Digits2B result = new Digits2B();
@@ -83,7 +161,7 @@ namespace ArmstrongGUI
             for (int i = 0; i < vectors.CountOfTwos; ++i)
             {
                 int i1, i2;
-                asm_power6(vectors, int exponent, out i1, out i2);
+                asm_power6(vectors.Twos[i], exponent, out i1, out i2);
                 int[] ret = {i1, i2};
                 result.Add(ret);
             }
@@ -111,14 +189,14 @@ namespace ArmstrongGUI
             Result = "";
             List<int> digits = SplitNumber(number);
             int exponent = digits.Count;
-            if (number == CountArmstrongSum(digits, exponent)
+            if (number == CountArmstrongSum(digits, exponent))
                 PrintArmstrongTestResultMessage(number, exponent);
         }
 
         public void ArmstrongTest(int number, int exponent)
         {
             Result = "";
-            if (number == CountArmstrongSum(SplitNumber(number), exponent)
+            if (number == CountArmstrongSum(SplitNumber(number), exponent))
                 PrintArmstrongTestResultMessage(number, exponent);
         }
 
@@ -150,14 +228,9 @@ namespace ArmstrongGUI
             {
                 ArmstrongTest(i);
             }
-        }
+        }*/
 
-        static int ParseArgToInt(string arg)
-        {
-            int result;
-            int.TryParse(arg, out result);
-            return result;
-        }
+
 
         [STAThread]
         static void Main(string[] args)

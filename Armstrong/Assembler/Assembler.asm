@@ -1,29 +1,38 @@
-.model flat, stdcall
-option casemap:none
-
 .data
-    vector      DWORD 0, 0, 0, 0          ; Placeholder for 4 DWORD parameters (vector elements)
-    exponent    DWORD 0                    ; Exponent parameter
+const_1 dd 1.0
+const_0 dd 0.0
+;exponent db 0
 
 .code
-    PUBLIC asm_power
+asm_power PROC	
+	movdqu xmm0, xmmword ptr [rcx]
+	movdqu xmm1, xmmword ptr [rdx]
 
-asm_power PROC
-    mov ecx, [exponent]                 ; Load the exponent into ecx
-    movdqu xmm0, [vector]               ; Load 4 DWORD parameters (vector elements) into xmm0
-    movaps xmm1, xmm0                   ; Copy the vector elements to xmm1
+	cvtdq2ps xmm0, xmm0
+	cvtdq2ps xmm1, xmm1
 
-    ; Calculate xmm0 ^ ecx (raise each element in xmm0 to the power of ecx)
-    power_loop:
-        dec ecx                         ; Decrement loop counter
-        jz  done                        ; If ecx is zero, jump to the end of the loop
-        imulps xmm0, xmm1               ; Multiply xmm0 by xmm1 (result in xmm0)
-        jmp power_loop
+	vbroadcastss xmm2, [const_1] ;Put 1 mask
+	vbroadcastss xmm3, [const_0] ;Put 0 mask
 
-    done:
-    ; The result is in xmm0
-    movd [result], xmm0                ; Store the result in the result variable
-    ret
+
+;xmm0 wektor na cyfry
+	;xmm1 wektor wykladnika
+	;xmm2 wektor jedynek
+	;xmm3 wektor zera
+	;xmm4 tymczasowy wynik	
+	;xmm5 wektor prawdy i fa³szu
+	power:
+		vcmpps xmm5, xmm1, xmm3, 0 ;Testing if the vector is 0
+		vptest xmm5, xmm5
+		mov rax, xmm5
+		jnz exitpower
+		vmulps xmm4, xmm4, xmm0
+		vsubps xmm1, xmm1, xmm2
+		jmp power
+	exitpower:
+cvtps2dq xmm0, xmm0
+movdqu xmmword ptr [rcx], xmm4
+
+ret
 asm_power ENDP
-
 END
