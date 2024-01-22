@@ -24,7 +24,7 @@ asm_power PROC
 	power:
 		vcmpps xmm5, xmm1, xmm3, 0 ;Testing if the vector is 0
 		vptest xmm5, xmm5
-		mov rax, xmm5
+		;mov rax, xmm5
 		jnz exitpower
 		vmulps xmm4, xmm4, xmm0
 		vsubps xmm1, xmm1, xmm2

@@ -48,16 +48,20 @@ namespace ArmstrongGUI
 
         int[] SplitNumber(int number)
         {
+            Console.WriteLine("number before split: " + number);
             int numberLength = CountNumbers(number);
 
             int[] result = new int[numberLength];
             for (int i = 0; i < numberLength; ++i)
             {
                 result[i] = number % 10;
+                Console.WriteLine(i + ": " + result[i]);
                 number = number / 10;
 
             }
+            Console.WriteLine("number after split:" + result.ToString());
             return result;
+            
 
         }
 

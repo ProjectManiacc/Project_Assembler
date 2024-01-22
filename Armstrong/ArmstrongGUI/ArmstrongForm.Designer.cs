@@ -69,7 +69,8 @@
             this.minNumberInput.Name = "minNumberInput";
             this.minNumberInput.Size = new System.Drawing.Size(100, 20);
             this.minNumberInput.TabIndex = 2;
-            this.minNumberInput.Text = "111";
+            this.minNumberInput.Text = "1024";
+            this.minNumberInput.TextChanged += new System.EventHandler(this.minNumberInput_TextChanged);
             // 
             // minExponentInput
             // 
@@ -77,7 +78,7 @@
             this.minExponentInput.Name = "minExponentInput";
             this.minExponentInput.Size = new System.Drawing.Size(100, 20);
             this.minExponentInput.TabIndex = 4;
-            this.minExponentInput.Text = "3";
+            this.minExponentInput.TextChanged += new System.EventHandler(this.minExponentInput_TextChanged);
             // 
             // minExponentLabel
             // 
@@ -94,7 +95,7 @@
             this.maxNumberInput.Name = "maxNumberInput";
             this.maxNumberInput.Size = new System.Drawing.Size(100, 20);
             this.maxNumberInput.TabIndex = 6;
-            this.maxNumberInput.Text = "11111";
+            this.maxNumberInput.Text = "1024";
             // 
             // maxNumberLabel
             // 
@@ -111,7 +112,6 @@
             this.maxExponentInput.Name = "maxExponentInput";
             this.maxExponentInput.Size = new System.Drawing.Size(100, 20);
             this.maxExponentInput.TabIndex = 8;
-            this.maxExponentInput.Text = "5";
             // 
             // maxExponentLabel
             // 

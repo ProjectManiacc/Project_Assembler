@@ -99,5 +99,15 @@ namespace ArmstrongGUI
         {
 
         }
+
+        private void minNumberInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void minExponentInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
