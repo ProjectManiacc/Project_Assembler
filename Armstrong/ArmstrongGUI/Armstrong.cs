@@ -66,19 +66,34 @@ namespace ArmstrongGUI
 
         }
 
-        int CountArmstrongSum(int[] digits)
+        int CountArmstrongSumAsm(int[] digits)
         {
 
             int exponentMask = 4;//FillExponentMask(digits.Length);
             Console.WriteLine("DIGITS before asm: " + digits);
-            //int sum = asm_power(digits, exponentMask);
-            Exponentation exponentation = new Exponentation();
-            int sum = exponentation.Power(digits, exponentMask);
+            int sum = asm_power(digits, exponentMask);
+            
             //int sum = 0;
             //Console.WriteLine("DIGISTS:");
 
             
             Console.WriteLine("SUM"+sum);
+
+            return sum;
+        }
+
+        int CountArmstrongSumHighLevel(int[] digits)
+        {
+
+            int exponentMask = 4;//FillExponentMask(digits.Length);
+            Console.WriteLine("DIGITS before asm: " + digits);
+            Exponentation exponentation = new Exponentation();
+            int sum = exponentation.Power(digits, exponentMask);
+            //int sum = 0;
+            //Console.WriteLine("DIGISTS:");
+
+
+            Console.WriteLine("SUM" + sum);
 
             return sum;
         }
@@ -92,7 +107,7 @@ namespace ArmstrongGUI
                 PrintArmstrongTestResultMessage(number, digits.Length);*/
 
             int[] digits = SplitNumber(1024);
-            Console.WriteLine(CountArmstrongSum(digits));
+            Console.WriteLine(CountArmstrongSumAsm(digits));
             //PrintArmstrongTestResultMessage(CountArmstrongSum(digits), 4);
 
         }
