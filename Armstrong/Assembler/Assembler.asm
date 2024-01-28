@@ -1,8 +1,3 @@
-.data
-const_1 dd 1.0
-const_0 dd 0.0
-;exponent db 0
-
 .code
 asm_power PROC	
 	movdqu xmm0, [rcx]	;za³adownaie do xmm0 zawartosci cyfr

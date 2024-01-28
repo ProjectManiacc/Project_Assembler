@@ -1,4 +1,5 @@
 ﻿using System;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,12 +8,13 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-
 namespace ArmstrongGUI
 {
+
     public partial class ArmstrongForm : Form
     {
         Armstrong armstrong = new Armstrong();
@@ -38,6 +40,7 @@ namespace ArmstrongGUI
 
         private void calculateButton_Click(object sender, EventArgs e)
         {
+
             int minNumber, maxNumber, minExponent, maxExponent;
 
             if (!int.TryParse(minNumberInput.Text, out minNumber))
@@ -52,24 +55,26 @@ namespace ArmstrongGUI
                 maxExponent = int.Parse(maxExponentInput.Text);
                 maxNumber = int.Parse(maxNumberInput.Text);
 
-                
-                    armstrong.ArmstrongRange(minNumber, maxNumber);
+
+                armstrong.ArmstrongRange(minNumber, maxNumber);
                 outputText.Text = armstrong.Result + Environment.NewLine;
             }
             else if (!string.IsNullOrEmpty(maxNumberInput.Text))
             {
                 maxNumber = int.Parse(maxNumberInput.Text);
 
-                
-                    armstrong.ArmstrongRange(minNumber, maxNumber );
+
+                armstrong.ArmstrongRange(minNumber, maxNumber);
                 outputText.Text = armstrong.Result + Environment.NewLine;
             }
             else if (!string.IsNullOrEmpty(minExponentInput.Text))
             {
                 minExponent = int.Parse(minExponentInput.Text);
+
                 
                 armstrong.ArmstrongRange(minNumber, minNumber);
                 
+
                 outputText.Text = armstrong.Result;
                 if (string.IsNullOrEmpty(outputText.Text))
                 {
@@ -79,6 +84,7 @@ namespace ArmstrongGUI
             }
             else
             {
+
                 armstrong.ArmstrongRange(minNumber, minNumber);
                 outputText.Text = armstrong.Result;
                 if (string.IsNullOrEmpty(outputText.Text))
