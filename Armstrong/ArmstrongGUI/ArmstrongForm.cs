@@ -125,37 +125,37 @@ namespace ArmstrongGUI
         // Don't let user type anything but digits in all 4 input fields.
         private void minNumberInput_TextChanged(object sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, "[^0-9]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(minNumberInput.Text, "[^0-9]"))
             {
                 MessageBox.Show("Please enter only numbers.");
-                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+                minNumberInput.Text = minNumberInput.Text.Remove(minNumberInput.Text.Length - 1);
             }
         }
 
         private void minExponentInput_TextChanged(object sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, "[^0-9]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(minExponentInput.Text, "[^0-9]"))
             {
                 MessageBox.Show("Please enter only numbers.");
-                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+                minExponentInput.Text = minExponentInput.Text.Remove(minExponentInput.Text.Length - 1);
             }
         }
         
         private void maxNumberInput_TextChanged(object sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, "[^0-9]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(maxNumberInput.Text, "[^0-9]"))
             {
                 MessageBox.Show("Please enter only numbers.");
-                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+                maxNumberInput.Text = maxNumberInput.Text.Remove(maxNumberInput.Text.Length - 1);
             }
         }
 
         private void maxExponentInput_TextChanged(object sender, EventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, "[^0-9]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(maxExponentInput.Text, "[^0-9]"))
             {
                 MessageBox.Show("Please enter only numbers.");
-                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+                maxExponentInput.Text = maxExponentInput.Text.Remove(maxExponentInput.Text.Length - 1);
             }
         }
         private void ThreadSliders_ValueChanged(object sender, EventArgs e)

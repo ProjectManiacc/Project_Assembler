@@ -8,15 +8,16 @@ namespace ArmstrongGUI
     public class Digits
     {
         private int countOfDigits;
+        private int countOfFours;
         public List<int[]> fours { get; }
         
         public Digits(int number)
         {
             countOfDigits = number.ToString().Length;
-            int countOfFours = ((list.Count - 1) / 4 + 1);
+            int countOfFours = ((countOfDigits - 1) / 4 + 1);
             fours = new List<int[]>();
             int[] allDigits = splitNumber(number);
-            int offset;
+            int offset = 0;
             for (int i = 0; i < countOfFours - 1; ++i)
             {
                 offset = 4*i;
@@ -24,21 +25,25 @@ namespace ArmstrongGUI
                 fours.Add(temp);
             }
             int[] lastPiece = { 0, 0, 0, 0 };
-            for (int i = offset; i < list.Count; ++i)
+            offset += 4;
+            for (int i = offset; i < countOfDigits - offset; ++i)
             {
-                lastPiece[i - offset] = list[i];
+                lastPiece[i - offset] = allDigits[i];
             }
             fours.Add(lastPiece);
         }
         
-        public int Count() {
-            return fours.Count;
-        }
+   
 
         public int CountDigits() {
             return countOfDigits;
         }
-        
+
+        public int CountOfFours()
+        {
+            return fours.Count;
+        }
+
         public void Add(int[] fourDigits)
         {
             if (fourDigits.Length != 4) return;

@@ -12,13 +12,27 @@ namespace ArmstrongGUI
     class Armstrong
     {
         //Krystian laptop
-        [DllImport(@"D:\studia\sem5\JA\Project_Assembler\Armstrong\x64\Debug")]
+        //[DllImport(@"D:\studia\sem5\JA\Project_Assembler\Armstrong\x64\Debug")]
         //Piotrek 
-        //[DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
+        [DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
         public static extern int asm_power(int[] digits, int exponent);
 
         //Collector for output message
         public string Result { get; private set; }
+
+
+        private int maxThreads = Environment.ProcessorCount;
+        private int threadsSelected = Environment.ProcessorCount;
+        private List<int> properThreadsValue = new List<int> { 1, 2, 4, 8, 16, 32, 64 };
+        public void SetThreadsSelected(int threads)
+        {
+            if (properThreadsValue.Contains(threads))
+            {
+                this.threadsSelected = threads;
+                return;
+            }
+            this.threadsSelected = maxThreads;
+        }
 
         public int CountArmstrongSum(Digits digits, int exponent) {
             int sum = 0;
@@ -28,6 +42,23 @@ namespace ArmstrongGUI
             return sum;
         }
 
+        private int CountNumbers(int number)
+        {
+            return number.ToString().Length;
+        }
+
+        int[] SplitNumber(int number)
+        {
+            Console.WriteLine("number before split: " + number);
+            int numberLength = CountNumbers(number);
+            int[] result = new int[numberLength];
+            for (int i = 0; i < numberLength; ++i)
+            {
+                result[i] = number % 10;
+                number = number / 10;
+            }
+            return result;
+        }
 
         void PrintArmstrongTestResultMessage(int number, int exponent)
         {
@@ -50,7 +81,7 @@ namespace ArmstrongGUI
         {
             Result = "";
             Digits digits = new Digits(number);
-            int exponent = digits.Count();
+            int exponent = digits.CountDigits();
             if (number == CountArmstrongSum(digits, exponent))
                 PrintArmstrongTestResultMessage(number, exponent);
         }
