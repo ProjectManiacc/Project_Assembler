@@ -17,7 +17,7 @@ namespace ArmstrongGUI
         public string Result { get; private set; }
         private int threadsSelected = 0; //todo - default user's device max threads
 
-        public void setThreadsSelected(int threads)
+        public void SetThreadsSelected(int threads)
         {
             this.threadsSelected = threads;
         }

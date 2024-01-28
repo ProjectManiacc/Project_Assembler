@@ -41,7 +41,7 @@ namespace ArmstrongGUI
             this.maxExponentLabel = new System.Windows.Forms.Label();
             this.calculateButton = new System.Windows.Forms.Button();
             this.outputText = new System.Windows.Forms.TextBox();
-            this.threadsSlider = new System.Windows.Forms.TrackBar();
+            this.threadsInput = new System.Windows.Forms.NumericUpDown();
             this.SuspendLayout();
             // 
             // title
@@ -146,12 +146,12 @@ namespace ArmstrongGUI
             this.outputText.Size = new System.Drawing.Size(742, 192);
             this.outputText.TabIndex = 10;
             //
-            // threadsSlider
+            // threadsInput
             //
-            this.threadsSlider.Location = new System.Drawing.Point(48, 541);
-            this.threadsSlider.Minimum = 1;
-            this.threadsSlider.Maximum = 100; // todo - users proc threads number
-            this.threadsSlider.ValueChanged += new System.EventHandler(this.ThreadSliders_ValueChanged);
+            this.threadsInput.Location = new System.Drawing.Point(48, 541);
+            this.threadsInput.Minimum = 1;
+            this.threadsInput.Maximum = 100; // todo - users proc threads number
+            this.threadsInput.ValueChanged += new System.EventHandler(this.ThreadSliders_ValueChanged);
             // `
             // ArmstrongForm
             // 
@@ -169,13 +169,12 @@ namespace ArmstrongGUI
             this.Controls.Add(this.minNumberInput);
             this.Controls.Add(this.minNumberLabel);
             this.Controls.Add(this.title);
-            this.Controls.Add(this.threadsSlider);
+            this.Controls.Add(this.threadsInput);
             this.Name = "ArmstrongForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.ArmstrongForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -191,7 +190,7 @@ namespace ArmstrongGUI
         private System.Windows.Forms.Label maxExponentLabel;
         private System.Windows.Forms.Button calculateButton;
         private System.Windows.Forms.TextBox outputText;
-        private System.Windows.Forms.TrackBar threadsSlider;
+        private System.Windows.Forms.NumericUpDown threadsInput;
     }
 }
 

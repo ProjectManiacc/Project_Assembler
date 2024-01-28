@@ -105,7 +105,7 @@ namespace ArmstrongGUI
         }
         private void ThreadSliders_ValueChanged(object sender, EventArgs e)
         {
-            armstrong.setThreadsSelected(threadsSlider.Value);
+            armstrong.SetThreadsSelected(Convert.ToInt32(threadsInput.Value));
         }
 
     }
