@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exponentation
+namespace ExponentationNamespace
 {
     public class Exponentation
     {
-        public int power(int[] digits, int exponent)
+        public int Power(int[] digits, int exponent)
         {
             int sum = 0;
             for (int i = 0; i< digits.Length; i++)

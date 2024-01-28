@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
-using Exponentation;
+using ExponentationNamespace;
 
 namespace ArmstrongGUI
 {
@@ -72,8 +72,8 @@ namespace ArmstrongGUI
             int exponentMask = 4;//FillExponentMask(digits.Length);
             Console.WriteLine("DIGITS before asm: " + digits);
             //int sum = asm_power(digits, exponentMask);
-            Exponentation.Exponentation exponentation = new Exponentation.Exponentation();
-            int sum = exponentation.power(digits, exponentMask);
+            Exponentation exponentation = new Exponentation();
+            int sum = exponentation.Power(digits, exponentMask);
             //int sum = 0;
             //Console.WriteLine("DIGISTS:");
 
