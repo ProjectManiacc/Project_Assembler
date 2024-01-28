@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ArmstrongGUI
 {
   /** This class helps to store 4-elements array of 2 byte numbers.

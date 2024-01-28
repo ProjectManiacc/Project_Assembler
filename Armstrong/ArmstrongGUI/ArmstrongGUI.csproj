@@ -73,6 +73,8 @@
       <DependentUpon>ArmstrongForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Armstrong.cs" />
+    <Compile Include="Digits2B.cs" />
+    <Compile Include="Digits4B.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ArmstrongForm.resx">
       <DependentUpon>ArmstrongForm.cs</DependentUpon>
