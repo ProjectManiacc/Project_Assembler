@@ -38,76 +38,125 @@ namespace ArmstrongGUI
             outputText.Text += "\tPawel Mielimonka" + Environment.NewLine;
         }
 
-        private void calculateButton_Click(object sender, EventArgs e)
+
+        private  void calculateButton_Click(object sender, EventArgs e)
         {
+            bool isMinNumberEmpty = string.IsNullOrEmpty(minNumberInput.Text);
+            bool isMaxNumberEmpty = string.IsNullOrEmpty(maxNumberInput.Text);
+            bool isMinExponentEmpty = string.IsNullOrEmpty(minExponentInput.Text);
+            bool isMaxExponentEmpty = string.IsNullOrEmpty(maxExponentInput.Text);
+            if (isMinNumberEmpty)
 
-            int minNumber, maxNumber, minExponent, maxExponent;
-
-            if (!int.TryParse(minNumberInput.Text, out minNumber))
             {
                 outputText.Text = "Invalid input for minimum number.";
                 return;
             }
 
-            if (!string.IsNullOrEmpty(maxExponentInput.Text))
+            //Now all states are in nice brackets ready to add time measurment
+            if (isMaxNumberEmpty)
             {
-                minExponent = int.Parse(minExponentInput.Text);
-                maxExponent = int.Parse(maxExponentInput.Text);
-                maxNumber = int.Parse(maxNumberInput.Text);
-
-
-                armstrong.ArmstrongRange(minNumber, maxNumber);
-                outputText.Text = armstrong.Result + Environment.NewLine;
-            }
-            else if (!string.IsNullOrEmpty(maxNumberInput.Text))
-            {
-                maxNumber = int.Parse(maxNumberInput.Text);
-
-
-                armstrong.ArmstrongRange(minNumber, maxNumber);
-                outputText.Text = armstrong.Result + Environment.NewLine;
-            }
-            else if (!string.IsNullOrEmpty(minExponentInput.Text))
-            {
-                minExponent = int.Parse(minExponentInput.Text);
-
-                
-                armstrong.ArmstrongRange(minNumber, minNumber);
-                
-
-                outputText.Text = armstrong.Result;
-                if (string.IsNullOrEmpty(outputText.Text))
+                if (isMinExponentEmpty)
                 {
-                    outputText.Text = "\nThis is not Armstrong's number";
+                    if (isMaxExponentEmpty) 
+                    {
+                        armstrong.ArmstrongTest(int.Parse(minNumberInput.Text));
+                    }
+                    else 
+                    {
+                        armstrong.ArmstrongTest(int.Parse(minNumberInput.Text), int.Parse(maxExponentInput.Text));
+                    }
                 }
-                outputText.Text += Environment.NewLine;
+                else
+
+                {
+                    if (isMaxExponentEmpty) 
+                    {
+                        armstrong.ArmstrongTest(int.Parse(minNumberInput.Text), int.Parse(minExponentInput.Text));
+                    }
+                    else 
+                    {
+                        outputText.Text = "We didn't expect anyone would try such case.";
+                        return;
+                    }
+                }
             }
             else
             {
 
-                armstrong.ArmstrongRange(minNumber, minNumber);
-                outputText.Text = armstrong.Result;
-                if (string.IsNullOrEmpty(outputText.Text))
+                if (isMinExponentEmpty)
                 {
-                    outputText.Text = "\nThis is not Armstrong's number";
+                    if (isMaxExponentEmpty) 
+                    {
+                        armstrong.TrueArmstrongRange(int.Parse(minNumberInput.Text), int.Parse(maxNumberInput.Text));
+                    }
+                    else 
+                    {
+                        armstrong.ArmstrongRange(int.Parse(minNumberInput.Text), int.Parse(maxNumberInput.Text), int.Parse(maxExponentInput.Text));
+                    }
                 }
-                outputText.Text += Environment.NewLine;
+                else
+
+                {
+                    if (isMaxExponentEmpty) 
+                    {
+                        armstrong.ArmstrongRange(int.Parse(minNumberInput.Text), int.Parse(maxNumberInput.Text), int.Parse(minExponentInput.Text));
+                    }
+                    else 
+                    {
+                        armstrong.ArmstrongRange(int.Parse(minNumberInput.Text), int.Parse(maxNumberInput.Text), int.Parse(minExponentInput.Text), int.Parse(maxExponentInput.Text));
+                    }
+                }
             }
+
+            outputText.Text = armstrong.Result;
+            if (string.IsNullOrEmpty(outputText.Text))
+            {
+                outputText.Text = "\nNo Armstrong number found in given ranges";
+            }
+            outputText.Text += Environment.NewLine;
+
         }
 
         private void title_Click(object sender, EventArgs e)
         {
 
         }
-
+        
+        // Don't let user type anything but digits in all 4 input fields.
         private void minNumberInput_TextChanged(object sender, EventArgs e)
         {
-
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Please enter only numbers.");
+                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+            }
         }
 
         private void minExponentInput_TextChanged(object sender, EventArgs e)
         {
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Please enter only numbers.");
+                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+            }
+        }
+        
+        private void maxNumberInput_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Please enter only numbers.");
+                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+            }
+        }
 
+        private void maxExponentInput_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Please enter only numbers.");
+                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+            }
         }
         private void ThreadSliders_ValueChanged(object sender, EventArgs e)
         {
