@@ -2,18 +2,13 @@ using System.Collections.Generic;
 
 namespace ArmstrongGUI
 {
-    /** This class helps to store 4-elements array of 2 byte numbers.
-    It's used to pass these arrays to assembler function for vector multiplying
-    and later collect results and sum them up.
+    /** This class helps to store 4-elements arrays of 4 byte int.
+    It's used to pass these arrays to assembler function for vector multiplying.
     */
-    public class Digits2B
+    public class Digits
     {
         public int CountOfFours { get; private set; }
-
         public List<int[]> Fours { get; }
-
-
-
         public Digits2B(List<int> list)
         {
             CountOfFours = ((list.Count - 1) / 4 + 1);
