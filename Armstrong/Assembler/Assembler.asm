@@ -1,34 +1,23 @@
 .data
-const_1 dd 1.0
-const_0 dd 0.0
-;exponent db 0
 
 .code
 asm_power PROC	
-	movdqu xmm0, [rcx]	;za³adownaie do xmm0 zawartosci cyfr
-	mov ecx, edx		;zaladowanie tablicy wykladnikow poteg
-	movdqu xmm2, xmm0	;kopia cyfr do rejestru z wynikami
-	
-	cmp ecx, 1			; porownywanie ecx i 1 
-	jle power_end     ; skocz do etykiety jesli jest mniejsze lub równe
+	movdqu xmm0, [rcx]		; load 4 ints from memory pointed by rcx ("input")
+	movdqu xmm2, xmm0		; copy these ints to xmm2 ("result")
+	cmp edx, 1			; compare exponent to 1
+	jle power_end     		; if exponent <= 1, jump to end
 	power_loop:
-		pmulld xmm2, xmm0 ; mnozymy liczbe przez siebie
-		dec ecx		; dekrementacja naszego wykladnika
-		cmp ecx, 1	; porownanie wykladnika potegi do 1, ecx -1 do akumulatora
-		jg power_loop ; skocz do power_loop jesli w akumulatroze jest wieksze od 0 
-
-
+		pmulld xmm2, xmm0 	; multiply result by input
+		dec edx			; decrement exponent
+		cmp edx, 1		; compare exponent to 1
+		jg power_loop 		; if still >1, jump back to power_loop
 	power_end:
-		movdqa xmm0, xmm2 ; kopiujemy nasz rezultat z pomnozonymi cyframi do xmm0
-
-		pshufd xmm1, xmm2, 0EEh ; Przesuñ górne dwie liczby do dolnych dwóch slotów
-		paddd xmm0, xmm1        ; Dodaj te liczby do oryginalnych dwóch liczb w xmm0
-		pshufd xmm1, xmm0, 1h  ; Przesuñ drug¹ liczbê na pierwsz¹ pozycjê
-		paddd xmm0, xmm1        ; Dodaj drug¹ liczbê do pierwszej
-		; xmm0 jest rezultat
-
-		movd eax, xmm0 ; przesuwany rezultat do rejestru eax
-
+		movdqa xmm0, xmm2 	; copy result to xmm0, not needed for input numbers anymore
+		pshufd xmm1, xmm2, 0EEh ; shuffle results so that 2 higher are under 2 lower
+		paddd xmm0, xmm1        ; add. this way xmm0[0] = xmm0[0]+xmm0[2] and xmm0[1] = xmm0[1]+xmm0[3]
+		pshufd xmm1, xmm0, 1h  	; shuffle results again with another mask so that value from xmm0[0] is under value from xmm0[1]
+		paddd xmm0, xmm1        ; add again
+		movd eax, xmm0 		; lowest 4B is the sum we need to return via rax
 ret
 asm_power ENDP
 END
