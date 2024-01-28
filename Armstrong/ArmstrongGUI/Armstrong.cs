@@ -20,8 +20,8 @@ namespace ArmstrongGUI
 
         //Collector for output message
         public string Result { get; private set; }
-        private int threadsSelected = 0; //todo - default user's device max threads
         private int maxThreads = Environment.ProcessorCount;
+        private int threadsSelected = Environment.ProcessorCount; 
         private List<int> properThreadsValue = new List<int> { 1, 2, 4, 8, 16, 32, 64 };
         public void SetThreadsSelected(int threads)
         {
