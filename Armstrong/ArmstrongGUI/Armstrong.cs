@@ -11,7 +11,7 @@ namespace ArmstrongGUI
     class Armstrong
     {
         [DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
-        public static extern void asm_power(int[] digits, int[] exponent);
+        public static extern int asm_power(int[] digits, int exponent);
         [DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler6.dll")]
         public static extern void asm_power6(int[] vector, int exponent, out int result1, out int result2);
 
@@ -68,14 +68,13 @@ namespace ArmstrongGUI
         int CountArmstrongSum(int[] digits)
         {
 
-            int[] exponentMask = { 4, 4, 4, 4 };//FillExponentMask(digits.Length);
-            asm_power(digits, exponentMask);
-            int sum = 0;
-            for(int i= 0 ; i < 4; i++)
-            {
-                sum += digits[i];
-            }
-            //Console.WriteLine(sum);
+            int exponentMask = 4;//FillExponentMask(digits.Length);
+            Console.WriteLine("DIGITS before asm: " + digits);
+            int sum = asm_power(digits, exponentMask);
+            //int sum = 0;
+            //Console.WriteLine("DIGISTS:");
+
+            
             Console.WriteLine("CHUJ"+sum);
 
             return sum;
