@@ -2,7 +2,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Windows.Forms;
 using ExponentationNamespace;
@@ -11,10 +13,38 @@ namespace ArmstrongGUI
 {
     class Armstrong
     {
-        [DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
+        //Krystian laptop
+        [DllImport(@"D:\studia\sem5\JA\Project_Assembler\Armstrong\x64\Debug")]
+        //Piotrek 
+        //[DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
         public static extern int asm_power(int[] digits, int exponent);
 
         public string Result { get; private set; }
+
+        private int maxThreads = Environment.ProcessorCount;
+        private int threadsSelected = Environment.ProcessorCount; 
+        private List<int> properThreadsValue = new List<int> { 1, 2, 4, 8, 16, 32, 64 };
+        public void SetThreadsSelected(int threads)
+        {
+            if(properThreadsValue.Contains(threads))
+            {
+                this.threadsSelected = threads;
+                return;
+            }
+            this.threadsSelected = maxThreads;
+        }
+
+        int Power(int x, int y)
+        {
+            // We don't want to import a whole math library for just integer power.
+            int result = 1;
+            for (int i = 0; i < y; ++i)
+            {
+                result *= x;
+            }
+            return result;
+        }
+
 
         private int CountNumbers(int number)
         {
@@ -52,6 +82,7 @@ namespace ArmstrongGUI
         int CountArmstrongSumAsm(int[] digits)
         {
 
+
             int exponentMask = 4;//FillExponentMask(digits.Length);
             Console.WriteLine("DIGITS before asm: " + digits);
             int sum = asm_power(digits, exponentMask);
@@ -67,11 +98,20 @@ namespace ArmstrongGUI
             Exponentation exponentation = new Exponentation();
             int sum = exponentation.Power(digits, exponentMask);
 
+
             return sum;
         }
 
         void ArmstrongTest(int number)
         {
+
+            Console.WriteLine("threads selected: " + this.threadsSelected);
+            /*Result = "";
+            int[] digits = SplitNumber(number);
+            
+            if (number == CountArmstrongSum(digits))
+                PrintArmstrongTestResultMessage(number, digits.Length);*/
+
 
             int[] digits = SplitNumber(1024);
 
@@ -82,6 +122,18 @@ namespace ArmstrongGUI
             Result = "";
 
             for (int n = numMin; n <= numMax; ++n)
+
+            {
+                ArmstrongTest(n);
+            }
+
+        }
+        void PrintArmstrongTestResultMessage(int number, int exponent)
+        {
+            int[] digits = SplitNumber(number);
+            StringBuilder resultBuilder = new StringBuilder();
+            foreach (var i in digits)
+
             {
                 ArmstrongTest(n);
             }
