@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+using Exponentation;
 
 namespace ArmstrongGUI
 {
@@ -12,14 +13,14 @@ namespace ArmstrongGUI
     {
         [DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
         public static extern int asm_power(int[] digits, int exponent);
-        [DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler6.dll")]
-        public static extern void asm_power6(int[] vector, int exponent, out int result1, out int result2);
+        //[DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\Exponentation\bin\Debug\Exponentation.dll")]
+        //public static extern int power(int[] digits, int exponent);
 
         //Collector for output message
         public string Result { get; private set; }
 
 
-        int Power(int x, int y)
+        /*int Power(int x, int y)
         {
             // We don't want to import a whole math library for just integer power.
             int result = 1;
@@ -28,7 +29,7 @@ namespace ArmstrongGUI
                 result *= x;
             }
             return result;
-        }
+        }*/
 
         private int CountNumbers(int number)
         {
@@ -70,12 +71,14 @@ namespace ArmstrongGUI
 
             int exponentMask = 4;//FillExponentMask(digits.Length);
             Console.WriteLine("DIGITS before asm: " + digits);
-            int sum = asm_power(digits, exponentMask);
+            //int sum = asm_power(digits, exponentMask);
+            Exponentation.Exponentation exponentation = new Exponentation.Exponentation();
+            int sum = exponentation.power(digits, exponentMask);
             //int sum = 0;
             //Console.WriteLine("DIGISTS:");
 
             
-            Console.WriteLine("CHUJ"+sum);
+            Console.WriteLine("SUM"+sum);
 
             return sum;
         }

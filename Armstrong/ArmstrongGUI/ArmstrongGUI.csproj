@@ -101,5 +101,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Exponentation\Exponentation.csproj">
+      <Project>{eb96128c-79c8-45f1-ae78-1d96a33b9555}</Project>
+      <Name>Exponentation</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
