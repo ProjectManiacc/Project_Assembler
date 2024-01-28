@@ -82,10 +82,8 @@ namespace ArmstrongGUI
             {
                 ArmstrongTest(i);
             }
-        }*/
-
-
-
+        }
+        
         [STAThread]
         static void Main(string[] args)
         {
