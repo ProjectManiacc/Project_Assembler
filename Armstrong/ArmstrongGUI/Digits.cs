@@ -7,41 +7,67 @@ namespace ArmstrongGUI
     */
     public class Digits
     {
-        public int CountOfFours { get; private set; }
-        public List<int[]> Fours { get; }
-        public Digits2B(List<int> list)
+        private int countOfDigits;
+        public List<int[]> fours { get; }
+        
+        public Digits(int number)
         {
-            CountOfFours = ((list.Count - 1) / 4 + 1);
-            Fours = new List<int[]>();
-            for (int i = 0; i < CountOfFours - 1; ++i)
+            countOfDigits = number.ToString().Length;
+            int countOfFours = ((list.Count - 1) / 4 + 1);
+            fours = new List<int[]>();
+            int[] allDigits = splitNumber(number);
+            int offset;
+            for (int i = 0; i < countOfFours - 1; ++i)
             {
-                int[] temp = {  list[4*i],
-                                 list[4*i + 1],
-                                 list[4*i + 2],
-                                 list[4*i + 3]
-                };
-                Fours.Add(temp);
+                offset = 4*i;
+                int[] temp = {allDigits[offset], allDigits[offset+1], allDigits[offset+2], allDigits[offset+3]};
+                fours.Add(temp);
             }
-            int startingNum = (CountOfFours - 1) * 4; //8
             int[] lastPiece = { 0, 0, 0, 0 };
-            for (int i = startingNum; i < list.Count; ++i)
+            for (int i = offset; i < list.Count; ++i)
             {
-                lastPiece[i - startingNum] = list[i];
+                lastPiece[i - offset] = list[i];
             }
-            Fours.Add(lastPiece);
+            fours.Add(lastPiece);
+        }
+        
+        public int Count() {
+            return fours.Count;
         }
 
-        public Digits2B()
+        public int CountDigits() {
+            return countOfDigits;
+        }
+        
+        public void Add(int[] fourDigits)
         {
-            CountOfFours = 0;
-            Fours = new List<int[]>();
+            if (fourDigits.Length != 4) return;
+            ++countOfFours;
+            fours.Add(fourDigits);
         }
 
-        public void Add(int[] results)
-        {
-            ++CountOfFours;
-            Fours.Add(results);
+        public void Add(int digit) {
+            if (digit > 9 || digit < 0) return;
+            if (countOfDigits % 4 == 0) {
+                int[] temp = {digit, 0, 0, 0};
+                Add(temp);
+            } else {
+                //in last four I have (countOfDigits - 4*fours.Count + 4) digits, so that's the index of position for new digit
+                fours[fours.Count - 1][countOfDigits - 4*fours.Count + 4] = digit;
+            }
+            ++countOfDigits;
         }
 
+        private int[] splitNumber(int number)
+        {            
+            int size = number.ToString().Length;
+            int[] result = new int[size];
+            for (int i = size - 1; i >= 0; --i)
+            {
+                result[i] = number % 10;
+                number = number / 10;
+            }
+            return result;
+        }
     }
 }
