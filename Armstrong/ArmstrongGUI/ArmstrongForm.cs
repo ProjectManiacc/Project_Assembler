@@ -1,17 +1,20 @@
 ﻿using System;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ArmstrongGUI
 {
-    
+
     public partial class ArmstrongForm : Form
     {
         Armstrong armstrong = new Armstrong();
@@ -35,6 +38,7 @@ namespace ArmstrongGUI
             outputText.Text += "\tPawel Mielimonka" + Environment.NewLine;
         }
 
+
         private  void calculateButton_Click(object sender, EventArgs e)
         {
             bool isMinNumberEmpty = string.IsNullOrEmpty(minNumberInput.Text);
@@ -42,10 +46,12 @@ namespace ArmstrongGUI
             bool isMinExponentEmpty = string.IsNullOrEmpty(minExponentInput.Text);
             bool isMaxExponentEmpty = string.IsNullOrEmpty(maxExponentInput.Text);
             if (isMinNumberEmpty)
+
             {
                 outputText.Text = "Invalid input for minimum number.";
                 return;
             }
+
             //Now all states are in nice brackets ready to add time measurment
             if (isMaxNumberEmpty)
             {
@@ -61,6 +67,7 @@ namespace ArmstrongGUI
                     }
                 }
                 else
+
                 {
                     if (isMaxExponentEmpty) 
                     {
@@ -75,6 +82,7 @@ namespace ArmstrongGUI
             }
             else
             {
+
                 if (isMinExponentEmpty)
                 {
                     if (isMaxExponentEmpty) 
@@ -87,6 +95,7 @@ namespace ArmstrongGUI
                     }
                 }
                 else
+
                 {
                     if (isMaxExponentEmpty) 
                     {
@@ -98,12 +107,14 @@ namespace ArmstrongGUI
                     }
                 }
             }
+
             outputText.Text = armstrong.Result;
             if (string.IsNullOrEmpty(outputText.Text))
             {
                 outputText.Text = "\nNo Armstrong number found in given ranges";
             }
             outputText.Text += Environment.NewLine;
+
         }
 
         private void title_Click(object sender, EventArgs e)
@@ -147,5 +158,10 @@ namespace ArmstrongGUI
                 textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
             }
         }
+        private void ThreadSliders_ValueChanged(object sender, EventArgs e)
+        {
+            armstrong.SetThreadsSelected(Convert.ToInt32(threadsInput.Value));
+        }
+
     }
 }

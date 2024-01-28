@@ -1,15 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Windows.Forms;
+using ExponentationNamespace;
 
 namespace ArmstrongGUI
 {
     class Armstrong
     {
-        [DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
+        //Krystian laptop
+        [DllImport(@"D:\studia\sem5\JA\Project_Assembler\Armstrong\x64\Debug")]
+        //Piotrek 
+        //[DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
         public static extern int asm_power(int[] digits, int exponent);
+
         //Collector for output message
         public string Result { get; private set; }
 
@@ -21,9 +28,10 @@ namespace ArmstrongGUI
             return sum;
         }
 
+
         void PrintArmstrongTestResultMessage(int number, int exponent)
         {
-            List<int> digits = SplitNumber(number);
+            int[] digits = SplitNumber(number);
             StringBuilder resultBuilder = new StringBuilder();
             foreach (var i in digits)
             {
@@ -36,6 +44,7 @@ namespace ArmstrongGUI
             resultBuilder.AppendLine();
             Result += resultBuilder.ToString();
         }
+
 
         public void ArmstrongTest(int number)
         {
@@ -84,6 +93,7 @@ namespace ArmstrongGUI
             }
         }
         
+
         [STAThread]
         static void Main(string[] args)
         {

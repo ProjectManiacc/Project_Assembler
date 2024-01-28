@@ -5,14 +5,16 @@ VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArmstrongGUI", "ArmstrongGUI\ArmstrongGUI.csproj", "{A49AD134-AE49-48F0-AA14-3964823D6A31}"
 	ProjectSection(ProjectDependencies) = postProject
-		{10E628FE-4839-4719-A75B-D333D15D701B} = {10E628FE-4839-4719-A75B-D333D15D701B}
 		{7A48E531-B00A-4E31-96BD-96C37CE9C783} = {7A48E531-B00A-4E31-96BD-96C37CE9C783}
+		{EB96128C-79C8-45F1-AE78-1D96A33B9555} = {EB96128C-79C8-45F1-AE78-1D96A33B9555}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Assembler", "Assembler\Assembler.vcxproj", "{7A48E531-B00A-4E31-96BD-96C37CE9C783}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Assembler6", "Assembler6\Assembler6.vcxproj", "{10E628FE-4839-4719-A75B-D333D15D701B}"
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exponentation", "Exponentation\Exponentation.csproj", "{EB96128C-79C8-45F1-AE78-1D96A33B9555}"
 EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,18 +49,20 @@ Global
 		{7A48E531-B00A-4E31-96BD-96C37CE9C783}.Release|x64.Build.0 = Release|x64
 		{7A48E531-B00A-4E31-96BD-96C37CE9C783}.Release|x86.ActiveCfg = Release|Win32
 		{7A48E531-B00A-4E31-96BD-96C37CE9C783}.Release|x86.Build.0 = Release|Win32
-		{10E628FE-4839-4719-A75B-D333D15D701B}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{10E628FE-4839-4719-A75B-D333D15D701B}.Debug|Any CPU.Build.0 = Debug|x64
-		{10E628FE-4839-4719-A75B-D333D15D701B}.Debug|x64.ActiveCfg = Debug|x64
-		{10E628FE-4839-4719-A75B-D333D15D701B}.Debug|x64.Build.0 = Debug|x64
-		{10E628FE-4839-4719-A75B-D333D15D701B}.Debug|x86.ActiveCfg = Debug|Win32
-		{10E628FE-4839-4719-A75B-D333D15D701B}.Debug|x86.Build.0 = Debug|Win32
-		{10E628FE-4839-4719-A75B-D333D15D701B}.Release|Any CPU.ActiveCfg = Release|x64
-		{10E628FE-4839-4719-A75B-D333D15D701B}.Release|Any CPU.Build.0 = Release|x64
-		{10E628FE-4839-4719-A75B-D333D15D701B}.Release|x64.ActiveCfg = Release|x64
-		{10E628FE-4839-4719-A75B-D333D15D701B}.Release|x64.Build.0 = Release|x64
-		{10E628FE-4839-4719-A75B-D333D15D701B}.Release|x86.ActiveCfg = Release|Win32
-		{10E628FE-4839-4719-A75B-D333D15D701B}.Release|x86.Build.0 = Release|Win32
+
+		{EB96128C-79C8-45F1-AE78-1D96A33B9555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB96128C-79C8-45F1-AE78-1D96A33B9555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB96128C-79C8-45F1-AE78-1D96A33B9555}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EB96128C-79C8-45F1-AE78-1D96A33B9555}.Debug|x64.Build.0 = Debug|Any CPU
+		{EB96128C-79C8-45F1-AE78-1D96A33B9555}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EB96128C-79C8-45F1-AE78-1D96A33B9555}.Debug|x86.Build.0 = Debug|Any CPU
+		{EB96128C-79C8-45F1-AE78-1D96A33B9555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB96128C-79C8-45F1-AE78-1D96A33B9555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB96128C-79C8-45F1-AE78-1D96A33B9555}.Release|x64.ActiveCfg = Release|Any CPU
+		{EB96128C-79C8-45F1-AE78-1D96A33B9555}.Release|x64.Build.0 = Release|Any CPU
+		{EB96128C-79C8-45F1-AE78-1D96A33B9555}.Release|x86.ActiveCfg = Release|Any CPU
+		{EB96128C-79C8-45F1-AE78-1D96A33B9555}.Release|x86.Build.0 = Release|Any CPU
+
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

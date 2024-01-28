@@ -7,3 +7,14 @@ C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\Arms
 C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.csproj.CoreCompileInputs.cache
 C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.exe
 C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.pdb
+D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\bin\Debug\ArmstrongGUI.exe.config
+D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\bin\Debug\ArmstrongGUI.exe
+D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\bin\Debug\ArmstrongGUI.pdb
+D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.csproj.AssemblyReference.cache
+D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.csproj.SuggestedBindingRedirects.cache
+D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.ArmstrongForm.resources
+D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.Properties.Resources.resources
+D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.csproj.GenerateResource.cache
+D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.csproj.CoreCompileInputs.cache
+D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.exe
+D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.pdb

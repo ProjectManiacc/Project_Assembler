@@ -1,5 +1,5 @@
-.data
 
+.data
 .code
 asm_power PROC	
 	movdqu xmm0, [rcx]		; load 4 ints from memory pointed by rcx ("input")
