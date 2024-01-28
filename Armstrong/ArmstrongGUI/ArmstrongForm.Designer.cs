@@ -1,4 +1,6 @@
-﻿namespace ArmstrongGUI
+﻿using System;
+
+namespace ArmstrongGUI
 {
     partial class ArmstrongForm
     {
@@ -39,6 +41,7 @@
             this.maxExponentLabel = new System.Windows.Forms.Label();
             this.calculateButton = new System.Windows.Forms.Button();
             this.outputText = new System.Windows.Forms.TextBox();
+            this.threadsSlider = new System.Windows.Forms.TrackBar();
             this.SuspendLayout();
             // 
             // title
@@ -142,7 +145,14 @@
             this.outputText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.outputText.Size = new System.Drawing.Size(742, 192);
             this.outputText.TabIndex = 10;
-            // 
+            //
+            // threadsSlider
+            //
+            this.threadsSlider.Location = new System.Drawing.Point(48, 541);
+            this.threadsSlider.Minimum = 1;
+            this.threadsSlider.Maximum = 100; // todo - users proc threads number
+            this.threadsSlider.ValueChanged += new System.EventHandler(this.ThreadSliders_ValueChanged);
+            // `
             // ArmstrongForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -159,6 +169,7 @@
             this.Controls.Add(this.minNumberInput);
             this.Controls.Add(this.minNumberLabel);
             this.Controls.Add(this.title);
+            this.Controls.Add(this.threadsSlider);
             this.Name = "ArmstrongForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.ArmstrongForm_Load);
@@ -180,6 +191,7 @@
         private System.Windows.Forms.Label maxExponentLabel;
         private System.Windows.Forms.Button calculateButton;
         private System.Windows.Forms.TextBox outputText;
+        private System.Windows.Forms.TrackBar threadsSlider;
     }
 }
 

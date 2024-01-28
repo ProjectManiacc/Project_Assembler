@@ -4,14 +4,15 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace ArmstrongGUI
 {
-    
     public partial class ArmstrongForm : Form
     {
         Armstrong armstrong = new Armstrong();
@@ -35,13 +36,8 @@ namespace ArmstrongGUI
             outputText.Text += "\tPawel Mielimonka" + Environment.NewLine;
         }
 
-
-
-
-        private  void calculateButton_Click(object sender, EventArgs e)
+        private void calculateButton_Click(object sender, EventArgs e)
         {
-            
-
             int minNumber, maxNumber, minExponent, maxExponent;
 
             if (!int.TryParse(minNumberInput.Text, out minNumber))
@@ -72,7 +68,7 @@ namespace ArmstrongGUI
             {
                 minExponent = int.Parse(minExponentInput.Text);
                 
-                    armstrong.ArmstrongRange(minNumber, minNumber);
+                armstrong.ArmstrongRange(minNumber, minNumber);
                 
                 outputText.Text = armstrong.Result;
                 if (string.IsNullOrEmpty(outputText.Text))
@@ -83,8 +79,7 @@ namespace ArmstrongGUI
             }
             else
             {
-                
-                    armstrong.ArmstrongRange(minNumber, minNumber);
+                armstrong.ArmstrongRange(minNumber, minNumber);
                 outputText.Text = armstrong.Result;
                 if (string.IsNullOrEmpty(outputText.Text))
                 {
@@ -92,7 +87,6 @@ namespace ArmstrongGUI
                 }
                 outputText.Text += Environment.NewLine;
             }
-
         }
 
         private void title_Click(object sender, EventArgs e)
@@ -109,5 +103,10 @@ namespace ArmstrongGUI
         {
 
         }
+        private void ThreadSliders_ValueChanged(object sender, EventArgs e)
+        {
+            armstrong.setThreadsSelected(threadsSlider.Value);
+        }
+
     }
 }

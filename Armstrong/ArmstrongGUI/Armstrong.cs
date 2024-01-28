@@ -10,14 +10,17 @@ namespace ArmstrongGUI
 {
     class Armstrong
     {
-        [DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
+        [DllImport(@"D:\studia\sem5\JA\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
         public static extern int asm_power(int[] digits, int exponent);
-        [DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler6.dll")]
-        public static extern void asm_power6(int[] vector, int exponent, out int result1, out int result2);
 
         //Collector for output message
         public string Result { get; private set; }
+        private int threadsSelected = 0; //todo - default user's device max threads
 
+        public void setThreadsSelected(int threads)
+        {
+            this.threadsSelected = threads;
+        }
 
         int Power(int x, int y)
         {
@@ -67,21 +70,16 @@ namespace ArmstrongGUI
 
         int CountArmstrongSum(int[] digits)
         {
-
-            int exponentMask = 4;//FillExponentMask(digits.Length);
-            Console.WriteLine("DIGITS before asm: " + digits);
-            int sum = asm_power(digits, exponentMask);
-            //int sum = 0;
-            //Console.WriteLine("DIGISTS:");
-
-            
-            Console.WriteLine("CHUJ"+sum);
-
+            Console.WriteLine(this.threadsSelected);
+            int exponentMask = 4; //FillExponentMask(digits.Length);
+            //int sum = asm_power(digits, exponentMask);
+            int sum = 0;
             return sum;
         }
 
         void ArmstrongTest(int number)
         {
+            Console.WriteLine(this.threadsSelected);
             /*Result = "";
             int[] digits = SplitNumber(number);
             
