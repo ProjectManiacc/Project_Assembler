@@ -14,28 +14,28 @@ namespace ArmstrongGUI
         public Digits(int number)
         {
             countOfDigits = number.ToString().Length;
-            int countOfFours = ((countOfDigits - 1) / 4 + 1);
+            int countOfFours = ((list.Count - 1) / 4 + 1);
             fours = new List<int[]>();
             int[] allDigits = splitNumber(number);
-            int offset = 0;
+            int offset;
             for (int i = 0; i < countOfFours - 1; ++i)
             {
                 offset = 4*i;
                 int[] temp = {allDigits[offset], allDigits[offset+1], allDigits[offset+2], allDigits[offset+3]};
                 fours.Add(temp);
             }
-            int[] lastPiece = { 0, 0, 0, 0 };
-            offset += 4;
-            for (int i = offset; i < countOfDigits - offset; ++i)
-            {
-                lastPiece[i - offset] = allDigits[i];
+            if (countOfDigits % 4 != 0) {
+                int[] lastPiece = { 0, 0, 0, 0 };
+                for (int i = offset; i < countOfDigits; ++i)
+                {
+                    lastPiece[i - offset] = list[i];
+                }
+                fours.Add(lastPiece);
             }
-            fours.Add(lastPiece);
         }
         
-   
-
-        public int CountDigits() {
+        public int CountDigits()
+        {
             return countOfDigits;
         }
 
@@ -53,7 +53,8 @@ namespace ArmstrongGUI
 
         public void Add(int digit) {
             if (digit > 9 || digit < 0) return;
-            if (countOfDigits % 4 == 0) {
+            if (countOfDigits % 4 == 0)
+            {
                 int[] temp = {digit, 0, 0, 0};
                 Add(temp);
             } else {
