@@ -24,13 +24,16 @@ namespace ArmstrongGUI
                 int[] temp = {allDigits[offset], allDigits[offset+1], allDigits[offset+2], allDigits[offset+3]};
                 fours.Add(temp);
             }
-            int[] lastPiece = { 0, 0, 0, 0 };
-            offset += 4;
-            for (int i = offset; i < countOfDigits - offset; ++i)
+            if (countOfDigits % 4 != 0)
             {
-                lastPiece[i - offset] = allDigits[i];
+                int[] lastPiece = { 0, 0, 0, 0 };
+                offset += 4;
+                for (int i = offset; i < countOfDigits - offset; ++i)
+                {
+                    lastPiece[i - offset] = allDigits[i];
+                }
+                fours.Add(lastPiece);
             }
-            fours.Add(lastPiece);
         }
         
    
