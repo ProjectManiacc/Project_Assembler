@@ -115,6 +115,15 @@ namespace ArmstrongGUI
             }
         }
 
+        public void ArmstrongExponentRange(int numMin, int exponentMin, int exponentMax)
+        {
+            Result = "";
+            for (int r = exponentMin; r <= exponentMax; ++r)
+            {
+                    ArmstrongTest(numMin, r);
+            }
+        }
+        
         public void TrueArmstrongRange(int numMin, int numMax)
         {
             Result = "";
