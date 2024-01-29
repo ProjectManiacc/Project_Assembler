@@ -75,8 +75,7 @@ namespace ArmstrongGUI
                     }
                     else 
                     {
-                        outputText.Text = "We didn't expect anyone would try such case.";
-                        return;
+                        armstrong.ArmstrongExponentRange(int.Parse(minNumberInput.Text), int.Parse(minExponentInput.Text), int.Parse(maxExponentInput.Text))
                     }
                 }
             }
