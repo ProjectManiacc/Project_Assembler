@@ -18,3 +18,6 @@ D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGU
 D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.csproj.CoreCompileInputs.cache
 D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.exe
 D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.pdb
+D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\bin\Debug\Exponentation.dll
+D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\bin\Debug\Exponentation.pdb
+D:\studia\sem5\JA\Project_Assembler\Armstrong\ArmstrongGUI\obj\Debug\ArmstrongGUI.csproj.CopyComplete

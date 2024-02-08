@@ -17,7 +17,7 @@ namespace ArmstrongGUI
 
     public partial class ArmstrongForm : Form
     {
-        Armstrong armstrong = new Armstrong();
+        ArmstrongMT armstrong = new ArmstrongMT();
         public ArmstrongForm()
         {
             InitializeComponent();

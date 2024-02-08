@@ -6,21 +6,21 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ArmstrongGUI;
 using ExponentationNamespace;
 
-namespace ArmstrongGUI
+namespace ArmstrongGUI_MT
 {
-    class ArmstrongMT
+    class Armstrong
     {
         //Krystian laptop
-        [DllImport(@"D:\studia\sem5\JA\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
+        //[DllImport(@"D:\studia\sem5\JA\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
         //Piotrek 
-        //[DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
+        [DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
         public static extern int asm_power(int[] digits, int exponent);
 
         //Collector for output message
         public string Result { get; private set; }
-
 
         private int maxThreads = Environment.ProcessorCount;
         private int threadsSelected = Environment.ProcessorCount;
@@ -35,9 +35,11 @@ namespace ArmstrongGUI
             this.threadsSelected = maxThreads;
         }
 
-        public int CountArmstrongSum(Digits digits, int exponent) {
+        public int CountArmstrongSum(Digits digits, int exponent)
+        {
             int sum = 0;
-            for (int i = 0; i < digits.CountOfFours(); ++i) {
+            for (int i = 0; i < digits.CountOfFours(); ++i)
+            {
                 sum += asm_power(digits.fours[i], exponent);
             }
             return sum;
@@ -98,38 +100,33 @@ namespace ArmstrongGUI
         public void ArmstrongRange(int numMin, int numMax, int exponentMin)
         {
             Result = "";
-            for (int n = numMin; n <= numMax; ++n)
-            {
-                ArmstrongTest(n, exponentMin);
-           }
-            /*Result = "";
             Parallel.For(numMin, numMax + 1, n =>
             {
                 ArmstrongTest(n, exponentMin);
-            });*/
+            });
         }
-                
+
         public void ArmstrongRange(int numMin, int numMax, int exponentMin, int exponentMax)
         {
             Result = "";
-            for (int r = exponentMin; r <= exponentMax; ++r)
+            Parallel.For(exponentMin, exponentMax + 1, r =>
             {
                 for (int n = numMin; n <= numMax; ++n)
                 {
                     ArmstrongTest(n, r);
                 }
-            }
+            });
         }
 
         public void TrueArmstrongRange(int numMin, int numMax)
         {
             Result = "";
-            for (int i = numMin; i <= numMax; ++i)
+            Parallel.For(numMin, numMax + 1, i =>
             {
                 ArmstrongTest(i);
-            }
+            });
         }
-        
+
 
         [STAThread]
         static void Main(string[] args)

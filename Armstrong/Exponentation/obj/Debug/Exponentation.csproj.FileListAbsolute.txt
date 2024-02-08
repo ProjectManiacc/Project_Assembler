@@ -4,3 +4,9 @@ C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\Exponentation\obj\Debug\Exp
 C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\Exponentation\obj\Debug\Exponentation.csproj.CoreCompileInputs.cache
 C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\Exponentation\obj\Debug\Exponentation.dll
 C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\Exponentation\obj\Debug\Exponentation.pdb
+D:\studia\sem5\JA\Project_Assembler\Armstrong\Exponentation\bin\Debug\Exponentation.dll
+D:\studia\sem5\JA\Project_Assembler\Armstrong\Exponentation\bin\Debug\Exponentation.pdb
+D:\studia\sem5\JA\Project_Assembler\Armstrong\Exponentation\obj\Debug\Exponentation.csproj.AssemblyReference.cache
+D:\studia\sem5\JA\Project_Assembler\Armstrong\Exponentation\obj\Debug\Exponentation.csproj.CoreCompileInputs.cache
+D:\studia\sem5\JA\Project_Assembler\Armstrong\Exponentation\obj\Debug\Exponentation.dll
+D:\studia\sem5\JA\Project_Assembler\Armstrong\Exponentation\obj\Debug\Exponentation.pdb
