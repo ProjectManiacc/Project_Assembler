@@ -28,7 +28,7 @@ namespace ArmstrongGUI
             {
                 int[] lastPiece = { 0, 0, 0, 0 };
                 offset += 4;
-                for (int i = offset; i < countOfDigits - offset; ++i)
+                for (int i = offset; i < countOfDigits; ++i)
                 {
                     lastPiece[i - offset] = allDigits[i];
                 }
