@@ -14,7 +14,7 @@ namespace ArmstrongGUI
         public Digits(int number)
         {
             countOfDigits = number.ToString().Length;
-            int countOfFours = ((countOfDigits - 1) / 4 + 1);
+            countOfFours = ((countOfDigits - 1) / 4 + 1);
             fours = new List<int[]>();
             int[] allDigits = splitNumber(number);
             int offset = 0;
@@ -34,10 +34,8 @@ namespace ArmstrongGUI
                 }
                 fours.Add(lastPiece);
             }
-        }
+        }      
         
-   
-
         public int CountDigits() {
             return countOfDigits;
         }
