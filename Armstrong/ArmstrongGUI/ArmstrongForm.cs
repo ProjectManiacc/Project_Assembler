@@ -77,11 +77,11 @@ namespace ArmstrongGUI
                 {
                     if (isMaxExponentEmpty) 
                     {
-                        armstrong.TrueArmstrongRange(int.Parse(minNumberInput.Text), int.Parse(maxNumberInput.Text));
+                        armstrong.TrueArmstrongRange(int.Parse(minNumberInput.Text), int.Parse(maxNumberInput.Text), int.Parse(threadsInput.Text));
                     }
                     else 
                     {
-                        armstrong.ArmstrongRange(int.Parse(minNumberInput.Text), int.Parse(maxNumberInput.Text), int.Parse(maxExponentInput.Text));
+                        armstrong.ArmstrongRange(int.Parse(minNumberInput.Text), int.Parse(maxNumberInput.Text), int.Parse(maxExponentInput.Text), int.Parse(threadsInput.Text));
                     }
                 }
                 else
@@ -89,7 +89,7 @@ namespace ArmstrongGUI
                 {
                     if (isMaxExponentEmpty) 
                     {
-                        armstrong.ArmstrongRange(int.Parse(minNumberInput.Text), int.Parse(maxNumberInput.Text), int.Parse(minExponentInput.Text));
+                        armstrong.ArmstrongRange(int.Parse(minNumberInput.Text), int.Parse(maxNumberInput.Text), int.Parse(minExponentInput.Text), int.Parse(threadsInput.Text));
                     }
                     else 
                     {

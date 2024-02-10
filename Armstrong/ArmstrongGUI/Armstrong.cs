@@ -135,19 +135,55 @@ namespace ArmstrongGUI
             stopwatchHighLevel.Stop();
         }
 
-        public void ArmstrongRange(int numMin, int numMax, int exponentMin)
+        public void ArmstrongRange(int numMin, int numMax, int exponentMin, int threadsCount)
         {
             stopwatchAsm.Reset();
             stopwatchHighLevel.Reset();
 
-            for (int n = numMin; n <= numMax; ++n)
+            int rangePerThread = (numMax - numMin + 1) / threadsCount;
+            CountdownEvent countdownEventHighLevel = new CountdownEvent(threadsCount);
+
+            for (int i = 0; i < threadsCount; i++)
             {
-                ArmstrongTestHighLevel(n, exponentMin);
+                ThreadPool.QueueUserWorkItem(new WaitCallback((state) =>
+                {
+                    int start = numMin + ((int)state * rangePerThread);
+                    int end = Math.Min(numMax, start + rangePerThread - 1);
+                    for (int n = start; n <= end; n++)
+                    {
+                            ArmstrongTestHighLevel(n, exponentMin);
+                        
+                    }
+                    countdownEventHighLevel.Signal();
+                }), i);
             }
+            countdownEventHighLevel.Wait();
             long elapsedHighLevel = stopwatchHighLevel.ElapsedMilliseconds;
+            Console.WriteLine("Execution time - C#: " + elapsedHighLevel);
+            countdownEventHighLevel.Dispose();
+
+
+            CountdownEvent countdownEventAsm = new CountdownEvent(threadsCount);
+            for (int i = 0; i < threadsCount; i++)
+            {
+                ThreadPool.QueueUserWorkItem(new WaitCallback((state) =>
+                {
+                    int start = numMin + ((int)state * rangePerThread);
+                    int end = Math.Min(numMax, start + rangePerThread - 1);
+                    for (int n = start; n <= end; n++)
+                    {
+                       
+                            ArmstrongTestAsm(n, exponentMin);
+                        
+                    }
+                    countdownEventAsm.Signal();
+                }), i);
+            }
+
+            countdownEventAsm.Wait();
             long elapsedAsm = stopwatchAsm.ElapsedMilliseconds;
             Console.WriteLine("Execution time - Assembler: " + elapsedAsm);
-            Console.WriteLine("Execution time - C#: " + elapsedHighLevel);
+            countdownEventAsm.Dispose();
         }
 
         public void ArmstrongRange(int numMin, int numMax, int exponentMin, int exponentMax, int threadsCount)
@@ -205,18 +241,55 @@ namespace ArmstrongGUI
 
         }
 
-        public void TrueArmstrongRange(int numMin, int numMax)
+        public void TrueArmstrongRange(int numMin, int numMax, int threadsCount)
         {
             stopwatchAsm.Reset();
             stopwatchHighLevel.Reset();
-            for (int i = numMin; i <= numMax; ++i)
+
+            int rangePerThread = (numMax - numMin + 1) / threadsCount;
+            CountdownEvent countdownEventHighLevel = new CountdownEvent(threadsCount);
+
+            for (int i = 0; i < threadsCount; i++)
             {
-                ArmstrongTestHighLevel(i);
+                ThreadPool.QueueUserWorkItem(new WaitCallback((state) =>
+                {
+                    int start = numMin + ((int)state * rangePerThread);
+                    int end = Math.Min(numMax, start + rangePerThread - 1);
+                    for (int n = start; n <= end; n++)
+                    {
+                        ArmstrongTestHighLevel(n);
+
+                    }
+                    countdownEventHighLevel.Signal();
+                }), i);
             }
+            countdownEventHighLevel.Wait();
             long elapsedHighLevel = stopwatchHighLevel.ElapsedMilliseconds;
+            Console.WriteLine("Execution time - C#: " + elapsedHighLevel);
+            countdownEventHighLevel.Dispose();
+
+
+            CountdownEvent countdownEventAsm = new CountdownEvent(threadsCount);
+            for (int i = 0; i < threadsCount; i++)
+            {
+                ThreadPool.QueueUserWorkItem(new WaitCallback((state) =>
+                {
+                    int start = numMin + ((int)state * rangePerThread);
+                    int end = Math.Min(numMax, start + rangePerThread - 1);
+                    for (int n = start; n <= end; n++)
+                    {
+
+                        ArmstrongTestAsm(n);
+
+                    }
+                    countdownEventAsm.Signal();
+                }), i);
+            }
+
+            countdownEventAsm.Wait();
             long elapsedAsm = stopwatchAsm.ElapsedMilliseconds;
             Console.WriteLine("Execution time - Assembler: " + elapsedAsm);
-            Console.WriteLine("Execution time - C#: " + elapsedHighLevel);
+            countdownEventAsm.Dispose();
         }
 
 
