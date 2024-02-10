@@ -79,7 +79,6 @@ namespace ArmstrongGUI
 
         public void ArmstrongTest(int number)
         {
-            Result = "";
             Digits digits = new Digits(number);
             int exponent = digits.CountDigits();
             if (number == CountArmstrongSum(digits, exponent))
@@ -88,7 +87,6 @@ namespace ArmstrongGUI
 
         public void ArmstrongTest(int number, int exponent)
         {
-            Result = "";
             Digits digits = new Digits(number);
             if (number == CountArmstrongSum(digits, exponent))
                 PrintArmstrongTestResultMessage(number, exponent);
@@ -96,7 +94,6 @@ namespace ArmstrongGUI
 
         public void ArmstrongRange(int numMin, int numMax, int exponentMin)
         {
-            Result = "";
             for (int n = numMin; n <= numMax; ++n)
             {
                 ArmstrongTest(n, exponentMin);
@@ -105,7 +102,6 @@ namespace ArmstrongGUI
                 
         public void ArmstrongRange(int numMin, int numMax, int exponentMin, int exponentMax)
         {
-            Result = "";
             for (int r = exponentMin; r <= exponentMax; ++r)
             {
                 for (int n = numMin; n <= numMax; ++n)
@@ -117,7 +113,6 @@ namespace ArmstrongGUI
 
         public void TrueArmstrongRange(int numMin, int numMax)
         {
-            Result = "";
             for (int i = numMin; i <= numMax; ++i)
             {
                 ArmstrongTest(i);
