@@ -9,7 +9,7 @@ using System.Diagnostics;
 using System.Threading;
 
 namespace ArmstrongGUI
-{   
+{
 
 
     class Armstrong
@@ -20,7 +20,6 @@ namespace ArmstrongGUI
         [DllImport(@"C:\Users\piotrek\Desktop\Project_Assembler\Armstrong\x64\Debug\Assembler.dll")]
         public static extern int asm_power(int[] digits, int exponent);
 
-        //Collector for output message
         public string Result { get; set; }
         Stopwatch stopwatchAsm = new Stopwatch();
         Stopwatch stopwatchHighLevel = new Stopwatch();
@@ -29,6 +28,7 @@ namespace ArmstrongGUI
         private int maxThreads = Environment.ProcessorCount;
         private int threadsSelected = Environment.ProcessorCount;
         private List<int> properThreadsValue = new List<int> { 1, 2, 4, 8, 16, 32, 64 };
+
         public void SetThreadsSelected(int threads)
         {
             if (properThreadsValue.Contains(threads))
@@ -39,11 +39,12 @@ namespace ArmstrongGUI
             this.threadsSelected = (maxThreads > 64 ? 64 : maxThreads);
         }
 
-        public int CountArmstrongSumAsm(Digits digits, int exponent) {
+        public int CountArmstrongSumAsm(Digits digits, int exponent)
+        {
             int sum = 0;
-            for (int i = 0; i < digits.CountOfFours(); ++i) {
+            for (int i = 0; i < digits.CountOfFours(); ++i)
+            {
                 sum += asm_power(digits.fours[i], exponent);
-                //sum += Exponentation.Power(digits.fours[i], exponent);
             }
             return sum;
         }
@@ -54,7 +55,6 @@ namespace ArmstrongGUI
             for (int i = 0; i < digits.CountOfFours(); ++i)
             {
                 sum += asm_power(digits.fours[i], exponent);
-                //sum += Exponentation.Power(digits.fours[i], exponent);
             }
             return sum;
         }
@@ -66,7 +66,6 @@ namespace ArmstrongGUI
 
         int[] SplitNumber(int number)
         {
-            //Console.WriteLine("number before split: " + number);
             int numberLength = CountNumbers(number);
             int[] result = new int[numberLength];
             for (int i = 0; i < numberLength; ++i)
@@ -103,8 +102,6 @@ namespace ArmstrongGUI
             if (number == CountArmstrongSumAsm(digits, exponent))
                 PrintArmstrongTestResultMessage(number, exponent);
             stopwatchAsm.Stop();
-
-           
         }
 
         public void ArmstrongTestAsm(int number, int exponent)
@@ -115,8 +112,6 @@ namespace ArmstrongGUI
             if (number == CountArmstrongSumAsm(digits, exponent))
                 PrintArmstrongTestResultMessage(number, exponent);
             stopwatchAsm.Stop();
-
-           
         }
 
         public void ArmstrongTestHighLevel(int number)
@@ -133,6 +128,7 @@ namespace ArmstrongGUI
         public void ArmstrongTestHighLevel(int number, int exponent)
         {
             Digits digits = new Digits(number);
+
             stopwatchHighLevel.Start();
             if (number == CountArmstrongSumHighLevel(digits, exponent))
                 PrintArmstrongTestResultMessage(number, exponent);
@@ -150,19 +146,16 @@ namespace ArmstrongGUI
             }
             long elapsedHighLevel = stopwatchHighLevel.ElapsedMilliseconds;
             long elapsedAsm = stopwatchAsm.ElapsedMilliseconds;
-            Console.WriteLine("Execution time - Assembler: " + elapsedAsm );
+            Console.WriteLine("Execution time - Assembler: " + elapsedAsm);
             Console.WriteLine("Execution time - C#: " + elapsedHighLevel);
         }
-                
+
         public void ArmstrongRange(int numMin, int numMax, int exponentMin, int exponentMax, int threadsCount)
         {
             stopwatchAsm.Reset();
             stopwatchHighLevel.Reset();
 
-            // Calculate the range of numbers to process per thread
             int rangePerThread = (numMax - numMin + 1) / threadsCount;
-
-            // Use CountdownEvent to wait for all threads to finish
             CountdownEvent countdownEventHighLevel = new CountdownEvent(threadsCount);
 
             for (int i = 0; i < threadsCount; i++)
@@ -171,7 +164,6 @@ namespace ArmstrongGUI
                 {
                     int start = numMin + ((int)state * rangePerThread);
                     int end = Math.Min(numMax, start + rangePerThread - 1);
-
                     for (int n = start; n <= end; n++)
                     {
                         for (int r = exponentMin; r <= exponentMax; r++)
@@ -179,32 +171,22 @@ namespace ArmstrongGUI
                             ArmstrongTestHighLevel(n, r);
                         }
                     }
-
-                    // Signal that this thread has completed its work
                     countdownEventHighLevel.Signal();
                 }), i);
             }
-
-            // Wait for all threads to finish
             countdownEventHighLevel.Wait();
-
             long elapsedHighLevel = stopwatchHighLevel.ElapsedMilliseconds;
             Console.WriteLine("Execution time - C#: " + elapsedHighLevel);
-
             countdownEventHighLevel.Dispose();
 
 
-
-
             CountdownEvent countdownEventAsm = new CountdownEvent(threadsCount);
-
             for (int i = 0; i < threadsCount; i++)
             {
                 ThreadPool.QueueUserWorkItem(new WaitCallback((state) =>
                 {
                     int start = numMin + ((int)state * rangePerThread);
                     int end = Math.Min(numMax, start + rangePerThread - 1);
-
                     for (int n = start; n <= end; n++)
                     {
                         for (int r = exponentMin; r <= exponentMax; r++)
@@ -212,21 +194,13 @@ namespace ArmstrongGUI
                             ArmstrongTestAsm(n, r);
                         }
                     }
-
-                    // Signal that this thread has completed its work
                     countdownEventAsm.Signal();
                 }), i);
             }
 
-            // Wait for all threads to finish
             countdownEventAsm.Wait();
-
-
-
             long elapsedAsm = stopwatchAsm.ElapsedMilliseconds;
             Console.WriteLine("Execution time - Assembler: " + elapsedAsm);
-
-            // Dispose the CountdownEvent
             countdownEventAsm.Dispose();
 
         }
@@ -244,7 +218,7 @@ namespace ArmstrongGUI
             Console.WriteLine("Execution time - Assembler: " + elapsedAsm);
             Console.WriteLine("Execution time - C#: " + elapsedHighLevel);
         }
-        
+
 
         [STAThread]
         static void Main(string[] args)
