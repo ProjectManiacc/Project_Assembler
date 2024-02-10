@@ -17,24 +17,29 @@ namespace ArmstrongGUI
             countOfFours = ((countOfDigits - 1) / 4 + 1);
             fours = new List<int[]>();
             int[] allDigits = splitNumber(number);
-            int offset = 0;
-            for (int i = 0; i < countOfFours - 1; ++i)
+            for (int i = 0; i < countOfFours; ++i) 
             {
-                offset = 4*i;
-                int[] temp = {allDigits[offset], allDigits[offset+1], allDigits[offset+2], allDigits[offset+3]};
-                fours.Add(temp);
+                fours.Add({0,0,0,0});
             }
-            if (countOfDigits % 4 != 0)
-            {
-                int[] lastPiece = { 0, 0, 0, 0 };
-                offset += 4;
-                for (int i = offset; i < countOfDigits; ++i)
-                {
-                    lastPiece[i - offset] = allDigits[i];
-                }
-                fours.Add(lastPiece);
+            for (int i = 0; i < countOfDigits; ++i) {
+                setSingle(i, allDigits[i]);
             }
-        }      
+            //for (int i = 0; i < countOfDigits; ++i) Condole.print("  " + getSingle(i));
+        }
+
+        private getSingle(int position) 
+        {
+            int four = position / 4;
+            position -= (4*four);
+            return (fours[four])[position];
+        }
+        
+        private setSingle(int position, int val) 
+        {
+            int four = position / 4;
+            position -= (4*four);
+            (fours[four])[position] = val;
+        }
         
         public int CountDigits() {
             return countOfDigits;
