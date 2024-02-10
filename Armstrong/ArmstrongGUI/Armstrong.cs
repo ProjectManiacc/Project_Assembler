@@ -18,7 +18,7 @@ namespace ArmstrongGUI
         public static extern int asm_power(int[] digits, int exponent);
 
         //Collector for output message
-        public string Result { get; private set; }
+        public string Result { get; set; }
 
 
         private int maxThreads = Environment.ProcessorCount;

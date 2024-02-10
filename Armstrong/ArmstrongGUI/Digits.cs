@@ -19,7 +19,7 @@ namespace ArmstrongGUI
             int[] allDigits = splitNumber(number);
             for (int i = 0; i < countOfFours; ++i) 
             {
-                fours.Add({0,0,0,0});
+                fours.Add(new int[] { 0,0,0,0});
             }
             for (int i = 0; i < countOfDigits; ++i) {
                 setSingle(i, allDigits[i]);
@@ -27,14 +27,14 @@ namespace ArmstrongGUI
             //for (int i = 0; i < countOfDigits; ++i) Condole.print("  " + getSingle(i));
         }
 
-        private getSingle(int position) 
+        private int getSingle(int position) 
         {
             int four = position / 4;
             position -= (4*four);
             return (fours[four])[position];
         }
         
-        private setSingle(int position, int val) 
+        private void setSingle(int position, int val) 
         {
             int four = position / 4;
             position -= (4*four);
