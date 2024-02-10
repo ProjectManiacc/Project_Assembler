@@ -60,11 +60,11 @@ namespace ArmstrongGUI
                 {
                     if (isMaxExponentEmpty) 
                     {
-                        armstrong.ArmstrongTest(int.Parse(minNumberInput.Text));
+                        armstrong.ArmstrongTestHighLevel(int.Parse(minNumberInput.Text));
                     }
                     else 
                     {
-                        armstrong.ArmstrongTest(int.Parse(minNumberInput.Text), int.Parse(maxExponentInput.Text));
+                        armstrong.ArmstrongTestHighLevel(int.Parse(minNumberInput.Text), int.Parse(maxExponentInput.Text));
                     }
                 }
                 else
@@ -72,7 +72,7 @@ namespace ArmstrongGUI
                 {
                     if (isMaxExponentEmpty) 
                     {
-                        armstrong.ArmstrongTest(int.Parse(minNumberInput.Text), int.Parse(minExponentInput.Text));
+                        armstrong.ArmstrongTestHighLevel(int.Parse(minNumberInput.Text), int.Parse(minExponentInput.Text));
                     }
                     else 
                     {
@@ -104,7 +104,7 @@ namespace ArmstrongGUI
                     }
                     else 
                     {
-                        armstrong.ArmstrongRange(int.Parse(minNumberInput.Text), int.Parse(maxNumberInput.Text), int.Parse(minExponentInput.Text), int.Parse(maxExponentInput.Text));
+                        armstrong.ArmstrongRange(int.Parse(minNumberInput.Text), int.Parse(maxNumberInput.Text), int.Parse(minExponentInput.Text), int.Parse(maxExponentInput.Text), int.Parse(threadsInput.Text));
                     }
                 }
             }
@@ -161,7 +161,15 @@ namespace ArmstrongGUI
         }
         private void ThreadSliders_ValueChanged(object sender, EventArgs e)
         {
-            armstrong.SetThreadsSelected(Convert.ToInt32(threadsInput.Value));
+            if (System.Text.RegularExpressions.Regex.IsMatch(threadsInput.Value.ToString(), "^([1-9]|[0-5][0-9]|6[0-4])$"))
+            {
+                armstrong.SetThreadsSelected(Convert.ToInt32(threadsInput.Value));
+            }
+            else
+            {
+                MessageBox.Show("Threads cannot exceed 64 ");
+                threadsInput.Value = 64;
+            }
         }
 
     }
