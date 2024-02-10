@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace ExponentationNamespace
+namespace ArmstrongGUI
 {
     public class Exponentation
     {
-        public int Power(int[] digits, int exponent)
+        public static int Power(int[] digits, int exponent)
         {
             int sum = 0;
             for (int i = 0; i < digits.Length; i++)

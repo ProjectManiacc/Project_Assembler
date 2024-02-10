@@ -5,10 +5,12 @@ using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Windows.Forms;
-using ExponentationNamespace;
+using System.Diagnostics;
 
 namespace ArmstrongGUI
-{
+{   
+
+
     class Armstrong
     {
         //Krystian laptop
@@ -19,6 +21,8 @@ namespace ArmstrongGUI
 
         //Collector for output message
         public string Result { get; set; }
+        Stopwatch stopwatchAsm = new Stopwatch();
+        Stopwatch stopwatchHighLevel = new Stopwatch();
 
 
         private int maxThreads = Environment.ProcessorCount;
@@ -34,10 +38,22 @@ namespace ArmstrongGUI
             this.threadsSelected = maxThreads;
         }
 
-        public int CountArmstrongSum(Digits digits, int exponent) {
+        public int CountArmstrongSumAsm(Digits digits, int exponent) {
             int sum = 0;
             for (int i = 0; i < digits.CountOfFours(); ++i) {
                 sum += asm_power(digits.fours[i], exponent);
+                //sum += Exponentation.Power(digits.fours[i], exponent);
+            }
+            return sum;
+        }
+
+        public int CountArmstrongSumHighLevel(Digits digits, int exponent)
+        {
+            int sum = 0;
+            for (int i = 0; i < digits.CountOfFours(); ++i)
+            {
+                sum += asm_power(digits.fours[i], exponent);
+                //sum += Exponentation.Power(digits.fours[i], exponent);
             }
             return sum;
         }
@@ -81,27 +97,52 @@ namespace ArmstrongGUI
         {
             Digits digits = new Digits(number);
             int exponent = digits.CountDigits();
-            if (number == CountArmstrongSum(digits, exponent))
+
+            stopwatchAsm.Start();
+            if (number == CountArmstrongSumAsm(digits, exponent))
                 PrintArmstrongTestResultMessage(number, exponent);
+            stopwatchAsm.Stop();
+
+            stopwatchHighLevel.Start();
+            if (number == CountArmstrongSumHighLevel(digits, exponent))
+                PrintArmstrongTestResultMessage(number, exponent);
+            stopwatchHighLevel.Stop();
         }
 
         public void ArmstrongTest(int number, int exponent)
         {
             Digits digits = new Digits(number);
-            if (number == CountArmstrongSum(digits, exponent))
+
+            stopwatchAsm.Start();
+            if (number == CountArmstrongSumAsm(digits, exponent))
                 PrintArmstrongTestResultMessage(number, exponent);
+            stopwatchAsm.Stop();
+
+            stopwatchHighLevel.Start();
+            if (number == CountArmstrongSumHighLevel(digits, exponent))
+                PrintArmstrongTestResultMessage(number, exponent);
+            stopwatchHighLevel.Stop();
         }
 
-        public void ArmstrongRange(int numMin, int numMax, int exponentMin)
+            public void ArmstrongRange(int numMin, int numMax, int exponentMin)
         {
+            stopwatchAsm.Reset();
+            stopwatchHighLevel.Reset();
+
             for (int n = numMin; n <= numMax; ++n)
             {
                 ArmstrongTest(n, exponentMin);
             }
+            long elapsedHighLevel = stopwatchHighLevel.ElapsedMilliseconds;
+            long elapsedAsm = stopwatchAsm.ElapsedMilliseconds;
+            Console.WriteLine("Execution time - Assembler: " + elapsedAsm );
+            Console.WriteLine("Execution time - C#: " + elapsedHighLevel);
         }
                 
         public void ArmstrongRange(int numMin, int numMax, int exponentMin, int exponentMax)
         {
+            stopwatchAsm.Reset();
+            stopwatchHighLevel.Reset();
             for (int r = exponentMin; r <= exponentMax; ++r)
             {
                 for (int n = numMin; n <= numMax; ++n)
@@ -109,14 +150,24 @@ namespace ArmstrongGUI
                     ArmstrongTest(n, r);
                 }
             }
+            long elapsedHighLevel = stopwatchHighLevel.ElapsedMilliseconds;
+            long elapsedAsm = stopwatchAsm.ElapsedMilliseconds;
+            Console.WriteLine("Execution time - Assembler: " + elapsedAsm);
+            Console.WriteLine("Execution time - C#: " + elapsedHighLevel);
         }
 
         public void TrueArmstrongRange(int numMin, int numMax)
         {
+            stopwatchAsm.Reset();
+            stopwatchHighLevel.Reset();
             for (int i = numMin; i <= numMax; ++i)
             {
                 ArmstrongTest(i);
             }
+            long elapsedHighLevel = stopwatchHighLevel.ElapsedMilliseconds;
+            long elapsedAsm = stopwatchAsm.ElapsedMilliseconds;
+            Console.WriteLine("Execution time - Assembler: " + elapsedAsm);
+            Console.WriteLine("Execution time - C#: " + elapsedHighLevel);
         }
         
 
