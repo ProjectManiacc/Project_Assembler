@@ -41,6 +41,7 @@ namespace ArmstrongGUI
 
         private  void calculateButton_Click(object sender, EventArgs e)
         {
+            armstrong.Result = ""; //clear output field
             bool isMinNumberEmpty = string.IsNullOrEmpty(minNumberInput.Text);
             bool isMaxNumberEmpty = string.IsNullOrEmpty(maxNumberInput.Text);
             bool isMinExponentEmpty = string.IsNullOrEmpty(minExponentInput.Text);
