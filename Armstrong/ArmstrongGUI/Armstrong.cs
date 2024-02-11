@@ -54,7 +54,7 @@ namespace ArmstrongGUI
             int sum = 0;
             for (int i = 0; i < digits.CountOfFours(); ++i)
             {
-                sum += asm_power(digits.fours[i], exponent);
+                sum += Exponentation.Power(digits.fours[i], exponent);
             }
             return sum;
         }
